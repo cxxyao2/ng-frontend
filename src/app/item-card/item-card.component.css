@@ -1,0 +1,16 @@
+.item-card {
+  max-width: 300px;
+}
+
+.item-card .mat-card-image {
+  margin-bottom: 5px;
+  width: 100%;
+  max-width: 200px;
+  max-height: 200px;
+  margin: auto 5px;
+}
+
+.item-card .mat-card-content {
+  margin-bottom: 5px;
+}
+/*# sourceMappingURL=item-card.component.css.map */

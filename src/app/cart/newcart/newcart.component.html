@@ -1,0 +1,16 @@
+<div class="content" role="main">
+  <p>newcart works!</p>
+  <form #cartForm="ngForm" (ngSubmit)="submit(cartForm.value)">
+    <div>{{ cartForm.value | json }}</div>
+    <label for="name">Name:</label>
+    <input #name="ngModel" required ngModel type="text" name="name" id="name" />
+    <div>{{ name.value }} is ok</div>
+    <div>{{ name.valid }}</div>
+    <button (click)="addItem()">Add a item</button>
+
+    <ng-container *ngFor="let item of itemList; let i = index">
+      <div>index is : &nbsp;{{ i }}</div>
+      <app-item-card [product]="item"></app-item-card>
+    </ng-container>
+  </form>
+</div>

@@ -1,0 +1,32 @@
+<mat-card class="item-card">
+  <img mat-card-image [src]="product.imageUrl" alt="Photo of a Shiba Inu" />
+  <mat-card-content>
+    <p>
+      The Shiba Inu is the smallest of the six original and distinct spitz
+      breeds of dog from Japan.
+    </p>
+  </mat-card-content>
+  <mat-card-actions>
+    <button
+      *ngIf="quantity === 0; else updateQuantity"
+      mat-raised-button
+      color="primary"
+      style="width: 100%"
+      (click)="quantity = 1"
+    >
+      Add to Cart
+    </button>
+    <!-- Number -->
+    <ng-template #updateQuantity>
+      <mat-form-field class="example-full-width">
+        <input
+          matInput
+          type="number"
+          placeholder="quantity"
+          [value]="quantity"
+          (change)="onChangeQty($event)"
+        />
+      </mat-form-field>
+    </ng-template>
+  </mat-card-actions>
+</mat-card>
