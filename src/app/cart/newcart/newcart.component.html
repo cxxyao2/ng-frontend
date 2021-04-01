@@ -7,10 +7,10 @@
     <div>{{ name.value }} is ok</div>
     <div>{{ name.valid }}</div>
     <button (click)="addItem()">Add a item</button>
-
-    <ng-container *ngFor="let item of itemList; let i = index">
-      <div>index is : &nbsp;{{ i }}</div>
-      <app-item-card [product]="item"></app-item-card>
-    </ng-container>
+    <div class="item-container">
+      <ng-container *ngFor="let item of itemList; let i = index">
+        <app-item-card [product]="item"></app-item-card>
+      </ng-container>
+    </div>
   </form>
 </div>

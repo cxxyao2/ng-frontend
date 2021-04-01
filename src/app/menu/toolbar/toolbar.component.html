@@ -9,6 +9,14 @@
     <li><a class="nav-link" routerLink="/login">Login</a></li>
   </ul>
   <ng-container *ngIf="cartService.items.length">
-    <span>Cart Qty: {{ cartService.getTotalQty() }}</span>
+    <div class="shopping-cart-icon">
+      <mat-icon [matBadge]="myQty$" matBadgeColor="warn"
+        >shopping_cart</mat-icon
+      >
+      <!-- Include text description of the icon's meaning for screen-readers -->
+      <span class="cdk-visually-hidden">
+        Shopping cart icon with overlaid badge showing the number
+      </span>
+    </div>
   </ng-container>
 </div>

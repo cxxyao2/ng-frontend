@@ -7,6 +7,7 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ChannelComponent implements OnInit {
 
+  /* channel CRUD */
   constructor() { }
 
   ngOnInit(): void {

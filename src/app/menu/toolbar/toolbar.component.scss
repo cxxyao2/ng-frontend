@@ -14,6 +14,11 @@
   color: white;
   font-weight: 600;
   box-shadow: 0 2px 5px gray;
+  overflow: hidden;
+}
+.toolbar button {
+  background-color: #1976d2;
+  border: 0;
 }
 
 .toolbar img {
@@ -30,6 +35,8 @@
 }
 
 .toolbar ul.main-navigation {
+  position: relative;
+  right: 40px;
   display: flex;
   flex-direction: row;
   align-items: center;
@@ -45,11 +52,31 @@
   cursor: pointer;
 }
 
-.toolbar a.nav-link:hover {
-  background-color: #90caf9;
+@media (max-width: 768px) {
+  .toolbar ul.main-navigation {
+    display: none;
+  }
 }
 
-.toolbar a.nav-link {
+.toolbar .shopping-cart-icon {
+  position: relative;
+  right: 40px;
+  transition: width 1s;
+}
+
+.toolbar .shopping-cart-icon:hover {
+  background-color: #90caf9;
+  box-shadow: 0 5px 10px gray;
+  border-radius: 4px;
+  width: 40px;
+}
+
+.toolbar .nav-link:hover {
+  background-color: #90caf9;
+  border-radius: 4px;
+}
+
+.toolbar .nav-link {
   text-decoration: none;
   color: white;
   font-size: 1.1rem;
@@ -57,5 +84,4 @@
   font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial,
     Lucida Grande, sans-serif;
   text-transform: uppercase;
-  
 }

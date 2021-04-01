@@ -34,6 +34,42 @@ export class NewcartComponent implements OnInit {
       quantity: 22,
       imageUrl: '../../../assets/motor4.jpg',
     },
+    {
+      id: 'a05',
+      name: 'a05',
+      quantity: 13,
+      imageUrl: '../../../assets/motor2.jpg',
+    },
+    {
+      id: 'a06',
+      name: 'a06',
+      quantity: 12,
+      imageUrl: '../../../assets/motor5.jpg',
+    },
+    {
+      id: 'a07',
+      name: 'a07',
+      quantity: 22,
+      imageUrl: '../../../assets/motor4.jpg',
+    },
+    {
+      id: 'a08',
+      name: 'a08',
+      quantity: 13,
+      imageUrl: '../../../assets/motor2.jpg',
+    },
+    {
+      id: 'a09',
+      name: 'a09',
+      quantity: 12,
+      imageUrl: '../../../assets/motor3.jpg',
+    },
+    {
+      id: 'a10',
+      name: 'a10',
+      quantity: 22,
+      imageUrl: '../../../assets/motor4.jpg',
+    },
   ];
   constructor(private cartService: CartService) {}
 

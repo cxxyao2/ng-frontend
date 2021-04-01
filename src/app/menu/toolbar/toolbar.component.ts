@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService} from "../../cart.service";
+import { CartService } from '../../cart.service';
 
 @Component({
   selector: 'toolbar',
@@ -7,6 +7,7 @@ import { CartService} from "../../cart.service";
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
+  myQty$ = this.cartService.getTotalQty();
   constructor(public cartService: CartService) {}
 
   ngOnInit(): void {}

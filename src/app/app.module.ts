@@ -1,55 +1,43 @@
 import { BrowserModule } from '@angular/platform-browser';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 
-import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MaterialCenterModule } from './material-center.module';
-import { LoginComponent } from './auth/login/login.component';
-import { NewcartComponent } from './cart/newcart/newcart.component';
-import { ToolbarComponent } from './menu/toolbar/toolbar.component';
+import { ChannelComponent } from './channel/channel.component';
 import { FooterbarComponent } from './menu/footerbar/footerbar.component';
+import { HomepageComponent } from './menu/homepage/homepage.component';
+import { MaterialCenterModule } from './material-center.module';
+import { PageNotFoundComponent } from './menu/page-not-found/page-not-found.component';
 import { SidebarComponent } from './menu/sidebar/sidebar.component';
-import { RegisterComponent } from './auth/register/register.component';
-import { ChangepasswordComponent } from './auth/changepassword/changepassword.component';
-import { ItemDetailsComponent } from './cart/item-details/item-details.component';
-import { ItemListComponent } from './cart/item-list/item-list.component';
-import { HomepageComponent } from './homepage/homepage.component';
-import { AdminComponent } from './admin/admin/admin.component';
-import { ChannelComponent } from './admin/channel/channel.component';
-import { ResetPasswordComponent } from './auth/reset-password/reset-password.component';
-import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
-import { ItemCardComponent } from './item-card/item-card.component';
-import { AllInputsComponent } from './all-inputs/all-inputs.component';
+import { ToolbarComponent } from './menu/toolbar/toolbar.component';
+
+
+import { AdminModule } from './admin/admin.module';
+import { AuthModule } from './auth/auth.module';
+import { CartModule } from './cart/cart.module';
 
 @NgModule({
   declarations: [
     AppComponent,
-    LoginComponent,
-    NewcartComponent,
     ToolbarComponent,
     FooterbarComponent,
     SidebarComponent,
-    RegisterComponent,
-    ChangepasswordComponent,
-    ItemDetailsComponent,
-    ItemListComponent,
     HomepageComponent,
-    AdminComponent,
-    ChannelComponent,
-    ResetPasswordComponent,
     PageNotFoundComponent,
-    ItemCardComponent,
-    AllInputsComponent,
+    ChannelComponent,
   ],
   imports: [
     BrowserModule,
-    AppRoutingModule,
     BrowserAnimationsModule,
     MaterialCenterModule,
     FormsModule,
     ReactiveFormsModule,
+    AdminModule,
+    CartModule,
+    AuthModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent],
