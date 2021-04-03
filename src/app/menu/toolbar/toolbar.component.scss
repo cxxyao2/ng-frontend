@@ -52,12 +52,26 @@
   cursor: pointer;
 }
 
-@media (max-width: 768px) {
+.toolbar .home-span {
+  font-size: 1.1rem;
+}
+
+.toolbar .sidebar-button {
+  margin: 0 10px !important;
+}
+@media screen and (max-width: 768px) {
   .toolbar ul.main-navigation {
     display: none;
   }
+
+  .toolbar .sidebar-button {
+    display: block !important;
+  }
 }
 
+.toolbar .sidebar-button {
+  display: none;
+}
 .toolbar .shopping-cart-icon {
   position: relative;
   right: 40px;

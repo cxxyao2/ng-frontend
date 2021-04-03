@@ -1,16 +1,66 @@
-<div class="content" role="main">
-  <p>newcart works!</p>
-  <form #cartForm="ngForm" (ngSubmit)="submit(cartForm.value)">
-    <div>{{ cartForm.value | json }}</div>
-    <label for="name">Name:</label>
-    <input #name="ngModel" required ngModel type="text" name="name" id="name" />
-    <div>{{ name.value }} is ok</div>
-    <div>{{ name.valid }}</div>
-    <button (click)="addItem()">Add a item</button>
+<div>
+  <form class="newcart" (ngSubmit)="submit()">
+    <mat-form-field>
+      <mat-label>Customer</mat-label>
+      <input
+        type="text"
+        required
+        matInput
+        placeholder="Search for a customer"
+        [formControl]="customerControl"
+        [matAutocomplete]="auto"
+      />
+      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+        <mat-option
+          *ngFor="let customer of filteredCustomers | async"
+          [value]="customer"
+        >
+          {{ customer.name | titlecase }}
+        </mat-option>
+      </mat-autocomplete>
+    </mat-form-field>
+    <mat-card class="marginY">
+      <p><em>Customer Information:</em></p>
+      <p>Name:{{ enteredCustomer.name }}</p>
+      <p>Telephone No.:{{ enteredCustomer.phone }}</p>
+      <p>Region:{{ enteredCustomer.region }}</p>
+    </mat-card>
+    <mat-divider></mat-divider>
+    <mat-form-field appearance="fill">
+      <mat-label>Category</mat-label>
+      <mat-select #matSelect required>
+        <ng-container *ngFor="let category of categories">
+          <mat-option [value]="category._id">{{ category.name }}</mat-option>
+        </ng-container>
+      </mat-select>
+    </mat-form-field>
+    <mat-form-field appearance="fill">
+      <mat-label>Product Name...</mat-label>
+      <input matInput (keyup)="changeProductKey($event)" />
+    </mat-form-field>
+    <button
+      mat-raised-button
+      color="primary"
+      aria-label="Button with a search icon"
+    >
+      <mat-icon>search</mat-icon>Search
+    </button>
     <div class="item-container">
-      <ng-container *ngFor="let item of itemList; let i = index">
-        <app-item-card [product]="item"></app-item-card>
+      <ng-container *ngFor="let product of filterdProducts; let i = index">
+        <app-item-card [product]="product"></app-item-card>
       </ng-container>
     </div>
   </form>
+
+  <h2>Product Details</h2>
+  <ul class="product-list">
+    <li
+      *ngFor="let product of products"
+      [class.selected]="product._id === selectedId"
+    >
+      <a [routerLink]="['/item', product._id]">
+        <span class="badge">{{ product._id }}</span>
+      </a>
+    </li>
+  </ul>
 </div>

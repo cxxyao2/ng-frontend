@@ -1,1 +1,20 @@
-<p>sidebar works!</p>
+<mat-drawer-container class="sidebar-container" autosize>
+  <mat-drawer #drawer name="drawer" id="drawer" class="sidebar" mode="over">
+    <p>Auto-resizing sidenav</p>
+    <p *ngIf="showFiller">Lorem, ipsum dolor sit amet consectetur.</p>
+    <button (click)="showFiller = !showFiller" mat-raised-button>
+      Toggle extra text
+    </button>
+    <ul>
+      <li>Login</li>
+      <li>Order</li>
+      <li>Channel</li>
+      <li>Reports Center</li>
+      <li>Orders Report</li>
+      <li>Channels Report</li>
+      <li>Contact US</li>
+    </ul>
+  </mat-drawer>
+
+  <div class="sidebar-content" (click)="drawer.toggle()"></div>
+</mat-drawer-container>

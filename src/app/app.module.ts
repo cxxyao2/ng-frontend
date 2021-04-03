@@ -2,6 +2,7 @@ import { BrowserModule } from '@angular/platform-browser';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -12,7 +13,6 @@ import { MaterialCenterModule } from './material-center.module';
 import { PageNotFoundComponent } from './menu/page-not-found/page-not-found.component';
 import { SidebarComponent } from './menu/sidebar/sidebar.component';
 import { ToolbarComponent } from './menu/toolbar/toolbar.component';
-
 
 import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
@@ -30,6 +30,7 @@ import { CartModule } from './cart/cart.module';
   ],
   imports: [
     BrowserModule,
+    HttpClientModule,
     BrowserAnimationsModule,
     MaterialCenterModule,
     FormsModule,

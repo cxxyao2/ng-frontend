@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { CartService } from '../../cart.service';
+import { CartService } from '../../service/cart.service';
 
 @Component({
   selector: 'toolbar',
@@ -7,8 +7,13 @@ import { CartService } from '../../cart.service';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  myQty$ = this.cartService.getTotalQty();
+  sideBarCollapsed = true;
   constructor(public cartService: CartService) {}
 
   ngOnInit(): void {}
+
+  showSideBar() {
+    console.log('clicked');
+    this.sideBarCollapsed = !this.sideBarCollapsed;
+  }
 }

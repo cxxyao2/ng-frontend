@@ -5,6 +5,7 @@
 /tmp
 /out-tsc
 /src/app/deleting
+/src/app/config.ts
 # Only exists if Bazel was run
 /bazel-out
 

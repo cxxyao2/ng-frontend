@@ -6,9 +6,22 @@ import { ReportsCenterComponent } from './reports-center/reports-center.componen
 import { ChannelsReportComponent } from './channels-report/channels-report.component';
 
 const adminRoutes: Routes = [
-  { path: 'channels-report', component: ChannelsReportComponent },
+  {
+    path: 'reports-center',
+    component: ReportsCenterComponent,
+    children: [
+      { path: 'orders', component: OrdersReportComponent },
+      {
+        path: 'channels',
+        component: ChannelsReportComponent,
+      },
+    ],
+  },
   { path: 'orders-report', component: OrdersReportComponent },
-  { path: 'reports-center', component: ReportsCenterComponent },
+  {
+    path: 'channels-report',
+    component: ChannelsReportComponent,
+  },
 ];
 
 @NgModule({

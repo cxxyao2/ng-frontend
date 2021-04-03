@@ -1,7 +1,20 @@
-.content .item-container {
+.newcart .item-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
   align-items: center;
   flex-wrap: wrap;
+}
+
+.product-list li.selected {
+  background-color: #cfd8dc;
+  color: white;
+}
+.product-list li.selected:hover {
+  background-color: #bbd8dc;
+}
+
+.marginY {
+  margin-top: 5px;
+  margin-bottom: 10px;
 }

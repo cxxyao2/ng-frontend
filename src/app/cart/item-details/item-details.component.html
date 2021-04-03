@@ -1,4 +1,4 @@
-<div class="content">
+
   <p>item-details works!</p>
-  <button routerLink="/order">Back to Order</button>
-</div>
+  {{ product | json }}
+  <button (click)="gotoPlaceOrder()">Back to Order</button>

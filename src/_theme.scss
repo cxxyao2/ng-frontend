@@ -1,0 +1,25 @@
+@import "~@angular/material/theming";
+
+@include mat-core();
+
+$active-primary: mat-palette($mat-purple, 500);
+$active-accent: mat-palette($mat-yellow, 700);
+$active-warn: mat-palette($mat-red);
+
+$active-theme: mat-light-theme($active-primary, $active-accent, $active-warn);
+
+.active-user {
+  @include angular-material-color($active-theme);
+  .background-primary {
+    background-color: mat-color($active-primary);
+  }
+  .sidebar li:hover {
+    background-color: mat-color($active-primary);
+  }
+}
+
+$app-primary: mat-palette($mat-blue, 400);
+
+.sidebar li:hover {
+  background-color: mat-color($app-primary);
+}

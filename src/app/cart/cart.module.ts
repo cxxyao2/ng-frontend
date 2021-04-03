@@ -5,7 +5,7 @@ import { CartRoutingModule } from './cart-routing.module';
 import { ItemCardComponent } from './item-card/item-card.component';
 import { ItemDetailsComponent } from './item-details/item-details.component';
 import { ItemListComponent } from './item-list/item-list.component';
-import { NewcartComponent } from './newcart/newcart.component';
+import { NewCartComponent } from './newcart/newcart.component';
 import { MaterialCenterModule } from '../material-center.module';
 
 @NgModule({
@@ -13,7 +13,7 @@ import { MaterialCenterModule } from '../material-center.module';
     ItemCardComponent,
     ItemDetailsComponent,
     ItemListComponent,
-    NewcartComponent,
+    NewCartComponent,
   ],
   imports: [
     CommonModule,

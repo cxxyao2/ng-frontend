@@ -1,6 +1,8 @@
 <div class="toolbar" role="banner">
-  <span class="material-icons">face</span>
-  <span>CRM</span>
+  <span class="material-icons md-24 sidebar-button" (click)="showSideBar()"
+    >format_align_center</span
+  >
+  <span class="home-span">CRM</span>
   <div class="spacer"></div>
   <ul class="main-navigation" role="navigation">
     <li><a class="nav-link" routerLink="/order">Order</a></li>
@@ -10,7 +12,7 @@
   </ul>
   <ng-container *ngIf="cartService.items.length">
     <div class="shopping-cart-icon">
-      <mat-icon [matBadge]="myQty$" matBadgeColor="warn"
+      <mat-icon [matBadge]="cartService.getTotalQty()" matBadgeColor="warn"
         >shopping_cart</mat-icon
       >
       <!-- Include text description of the icon's meaning for screen-readers -->
@@ -20,3 +22,7 @@
     </div>
   </ng-container>
 </div>
+<!-- TODO  sidebar 的控制-->
+<ng-container *ngIf="!sideBarCollapsed">
+  <app-sidebar></app-sidebar>
+</ng-container>

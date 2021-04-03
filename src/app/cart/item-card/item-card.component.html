@@ -1,12 +1,12 @@
 <mat-card class="item-card">
   <img
     mat-card-image
-    [src]="product.imageUrl"
+    src="../../../assets/motor1.jpg"
     alt="Photo of a Shiba Inu"
-    [routerLink]="['/item', product.id]"
+    [routerLink]="['/item', product._id]"
   />
   <mat-card-content>
-    <p [routerLink]="['/item', product.id]">
+    <p [routerLink]="['/item', product._id]">
       The Shiba Inu is the smallest of the six original and distinct spitz
       breeds of dog from Japan.
     </p>
@@ -17,7 +17,7 @@
       mat-raised-button
       color="primary"
       style="width: 100%"
-      (click)="quantity = 1"
+      (click)="setInitQty()"
     >
       Add to Cart
     </button>
