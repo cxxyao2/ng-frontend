@@ -1,1 +1,83 @@
-<p>item-list works!</p>
+<div class="content" role="main">
+  <form (ngSubmit)="submit()">
+    <h2>Items in cart</h2>
+    <div class="item-list">
+      <div
+        *ngIf="saveSucceedMessage.length >= 1"
+        [class.succeed-message]="saveSucceedMessage.length >= 1"
+      >
+        {{ saveSucceedMessage }}
+      </div>
+      <div
+        *ngIf="saveFailMessage.length >= 1"
+        [class.error-message]="saveFailMessage.length >= 1"
+      >
+        {{ saveFailMessage }}
+      </div>
+      <ng-container
+        *ngIf="itemsInCart && itemsInCart.length >= 1; else loading"
+      >
+        <div class="marginY">
+          <div>
+            {{ selection && selection.selected.length }} &nbsp;items are
+            selected:
+          </div>
+          <div>Qty: {{ totalQty }}</div>
+        </div>
+        <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+          <!-- Checkbox Column -->
+          <ng-container matColumnDef="select">
+            <th mat-header-cell *matHeaderCellDef>
+              <mat-checkbox
+                (change)="$event ? masterToggle() : null"
+                [checked]="selection.hasValue() && isAllSelected()"
+                [indeterminate]="selection.hasValue() && !isAllSelected()"
+                [aria-label]="checkboxLabel()"
+              >
+              </mat-checkbox>
+            </th>
+            <td mat-cell *matCellDef="let row">
+              <mat-checkbox
+                (click)="$event.stopPropagation()"
+                (change)="$event ? selection.toggle(row) : null"
+                [checked]="selection.isSelected(row)"
+                [aria-label]="checkboxLabel(row)"
+              >
+              </mat-checkbox>
+            </td>
+          </ng-container>
+
+          <!-- Position Column -->
+          <ng-container matColumnDef="id">
+            <th mat-header-cell *matHeaderCellDef>No.</th>
+            <td mat-cell *matCellDef="let element">{{ element.id }}</td>
+          </ng-container>
+
+          <!-- Name Column -->
+          <ng-container matColumnDef="name">
+            <th mat-header-cell *matHeaderCellDef>Name</th>
+            <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+          </ng-container>
+
+          <!-- Quantity Column -->
+          <ng-container matColumnDef="quantity">
+            <th mat-header-cell *matHeaderCellDef>Quantity</th>
+            <td mat-cell *matCellDef="let element">{{ element.quantity }}</td>
+          </ng-container>
+
+          <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+          <tr
+            mat-row
+            *matRowDef="let row; columns: displayedColumns"
+            (click)="selection.toggle(row)"
+          ></tr>
+        </table>
+        <button class="marginY" mat-raised-button color="primary">
+          Submit
+        </button>
+      </ng-container>
+
+      <ng-template #loading>{{ getLoadingMessage() }}</ng-template>
+    </div>
+  </form>
+</div>

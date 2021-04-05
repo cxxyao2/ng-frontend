@@ -2,6 +2,9 @@ import { Injectable } from '@angular/core';
 import { Item } from '../Item';
 import { Customer } from '../Customer';
 
+import { of } from 'rxjs';
+import { delay } from 'rxjs/operators';
+
 @Injectable({
   providedIn: 'root',
 })
@@ -19,37 +22,41 @@ export class CartService {
     this.client = selectedCustomer;
   }
 
-  distributeItem(waitingItem: Item): void {
+  addItem(waitingItem: Item): void {
     const idx = this.items.findIndex((item) => item.id === waitingItem.id);
     if (idx >= 0) {
       if (waitingItem.quantity > 0) {
-        this.update(idx, waitingItem);
+        this.items[idx].quantity = waitingItem.quantity;
       } else {
-        this.delete(idx);
+        this.items.splice(idx, 1);
       }
     } else {
-      this.add(waitingItem);
+      this.items.push(waitingItem);
     }
   }
 
-  add(item: Item): void {
-    this.items.push(item);
+  deleteItem(waitingItem: Item): void {
+    const idx = this.items.findIndex((item) => item.id === waitingItem.id);
+    if (idx >= 0) {
+      this.items.splice(idx, 1);
+    }
   }
 
-  delete(index: number): void {
-    this.items.splice(index, 1);
-  }
-
-  update(index: number, updatedItem: Item): void {
-    this.items[index].quantity = updatedItem.quantity;
+  updateItem(waitingItem: Item): void {
+    const idx = this.items.findIndex((item) => item.id === waitingItem.id);
+    if (idx >= 0) {
+      this.items[idx].quantity = waitingItem.quantity;
+    }
   }
 
   getTotalQty(): number {
-    let sumQty = 0;
-    for (const item of this.items) {
-      sumQty += item.quantity;
-    }
-    return sumQty;
+    return this.items
+      .map((item) => item.quantity)
+      .reduce((acc, value) => acc + value, 0);
+  }
+
+  getItems() {
+    return of(this.items).pipe(delay(2000));
   }
 
   clear(): void {

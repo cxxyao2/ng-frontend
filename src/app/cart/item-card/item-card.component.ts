@@ -30,12 +30,14 @@ export class ItemCardComponent implements OnInit {
       name: this.product.name,
       quantity: this.quantity,
     };
-    this.cartService.distributeItem(changedItem);
+    this.cartService.addItem(changedItem);
   }
 
   onChangeQty($event: any): void {
     if ($event.target.value) {
-      this.quantity = $event.target.value;
+      const parsed = parseInt($event.target.value, 10);
+      const qty = isNaN(parsed) ? 0 : parsed;
+      this.quantity = qty;
     } else {
       this.quantity = 0;
     }
@@ -44,6 +46,6 @@ export class ItemCardComponent implements OnInit {
       name: this.product.name,
       quantity: this.quantity,
     };
-    this.cartService.distributeItem(changedItem);
+    this.cartService.addItem(changedItem);
   }
 }

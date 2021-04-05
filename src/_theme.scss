@@ -16,10 +16,24 @@ $active-theme: mat-light-theme($active-primary, $active-accent, $active-warn);
   .sidebar li:hover {
     background-color: mat-color($active-primary);
   }
+  .error-message {
+    color: mat-color($active-warn);
+  }
+  .succeed-message {
+    color: mat-color($active-primary);
+  }
 }
 
 $app-primary: mat-palette($mat-blue, 400);
+$app-warn: mat-palette($mat-orange, 900);
 
 .sidebar li:hover {
   background-color: mat-color($app-primary);
+}
+.error-message {
+  color: mat-color($app-warn);
+}
+
+.succeed-message {
+  color: mat-color($app-primary);
 }

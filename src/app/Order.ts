@@ -1,8 +1,8 @@
 export interface Order {
-  customerId: string;
-  productId: string;
+  customer: string;
+  product: string;
   quantity: number;
   price: number;
-  coupon?: 'aaaa';
+  coupon?: string;
   _id?: string;
 }

@@ -1,8 +1,8 @@
 import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
-import { ActivatedRoute, ParamMap } from '@angular/router';
-import { FormGroup, FormControl } from '@angular/forms';
+import { ActivatedRoute } from '@angular/router';
+import { FormControl } from '@angular/forms';
 import { Observable } from 'rxjs';
-import { startWith, map, tap } from 'rxjs/operators';
+import { startWith, map } from 'rxjs/operators';
 
 import { CartService } from '../../service/cart.service';
 import { Item } from '../../Item';
@@ -18,9 +18,10 @@ import { MatSelect } from '@angular/material/select';
   templateUrl: './newcart.component.html',
   styleUrls: ['./newcart.component.scss'],
 })
-export class NewCartComponent implements OnInit {
+export class NewCartComponent implements OnInit,AfterViewInit {
   @ViewChild('matSelect') matSelect!: MatSelect;
   customerControl = new FormControl();
+  errorMessage = '';
   initCustomer: Customer = {
     _id: '',
     name: '',
@@ -66,9 +67,15 @@ export class NewCartComponent implements OnInit {
     private productSer: ProductService
   ) {}
 
-  ngOnInit(): void {
-    console.log('newcart ngOnInit ');
+  ngAfterViewInit(): void {
+    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    //Add 'implements AfterViewInit' to the class.
+    this.matSelect.valueChange.subscribe((value: string) => {
+      this.enteredCategoryId = value;
+    });
+  }
 
+  ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
       this.selectedProductId = params.get('id') || '';
     });
@@ -78,18 +85,28 @@ export class NewCartComponent implements OnInit {
     this.filteredCustomers = this.customerControl.valueChanges.pipe(
       startWith(''),
       map((value) => (typeof value === 'string' ? value : value.name)),
-
       map((name) =>
         name ? this._filterCustomers(name) : this.customers.slice()
       )
     );
-  }
-
-  ngAfterViewInit() {
-    this.matSelect.valueChange.subscribe((value: string) => {
-      this.enteredCategoryId = value;
+    this.customerControl.valueChanges.subscribe((data) => {
+      const cName = typeof data === 'string' ? data : data.name;
+      const idx = this.customers.findIndex(
+        (customer) => customer.name === cName
+      );
+      if (idx >= 0) {
+        this.enteredCustomer = { ...this.customers[idx] };
+      } else {
+        this.enteredCustomer = {
+          _id: '',
+          name: '',
+          phone: '',
+          region: '',
+        };
+      }
     });
   }
+
   displayFn(customer: Customer): string {
     return customer && customer.name ? customer.name : '';
   }
@@ -111,16 +128,24 @@ export class NewCartComponent implements OnInit {
     this.enteredProductKey = keys;
   }
 
-  submit($event: any): void {
-    this.filterdProducts = this.products.filter((product) => {
-      product.category === this.enteredCategoryId &&
-        product['name'].includes(this.enteredProductKey);
-    });
-    console.log('name', this.customerControl.value);
+  submit(): void {
+    this.errorMessage = '';
+    if (!this.enteredCustomer.name) {
+      this.errorMessage = 'Please enter a valid customer.';
+      return;
+    }
 
-    console.log('form is submitted');
-    console.log($event.target.value);
+    if (!this.enteredCategoryId) {
+      this.errorMessage = 'Please select a valid category.';
+      return;
+    }
+
+    this.cartService.updateClient(this.enteredCustomer);
+
+    this.filterdProducts = this.products.filter(
+      (product) =>
+        product.category === this.enteredCategoryId &&
+        product.name.includes(this.enteredProductKey)
+    );
   }
-
-  
 }

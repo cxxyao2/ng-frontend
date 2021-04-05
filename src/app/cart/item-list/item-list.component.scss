@@ -1,0 +1,13 @@
+table {
+  width: 100%;
+}
+
+tr.mat-footer-row {
+  font-weight: bold;
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start !important;
+}

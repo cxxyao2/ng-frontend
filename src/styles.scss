@@ -53,12 +53,12 @@ footer {
 
 .content {
   display: flex;
-  margin: 70px auto 32px;
+  margin: 70px auto 5px;
   padding: 5px;
   max-width: 960px;
   min-height: 600px;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: flex-start;
   align-items: center;
 }
 
@@ -78,4 +78,9 @@ footer {
 .bigInput {
   font-size: 1rem;
   line-height: 1.2rem;
+}
+
+.marginY {
+  margin-top: 5px !important;
+  margin-bottom: 5px !important;
 }

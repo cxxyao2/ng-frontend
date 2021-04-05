@@ -1,4 +1,4 @@
-<div>
+<div class="content" role="main">
   <form class="newcart" (ngSubmit)="submit()">
     <mat-form-field>
       <mat-label>Customer</mat-label>
@@ -19,11 +19,11 @@
         </mat-option>
       </mat-autocomplete>
     </mat-form-field>
-    <mat-card class="marginY">
-      <p><em>Customer Information:</em></p>
-      <p>Name:{{ enteredCustomer.name }}</p>
-      <p>Telephone No.:{{ enteredCustomer.phone }}</p>
-      <p>Region:{{ enteredCustomer.region }}</p>
+    <mat-card>
+      <p style="font-size: 1.1rem">Customer Information:</p>
+      <p>Name:&nbsp;&nbsp;{{ enteredCustomer.name | titlecase }}</p>
+      <p>Telephone No.:&nbsp;{{ enteredCustomer.phone }}</p>
+      <p>Region:&nbsp;{{ enteredCustomer.region }}</p>
     </mat-card>
     <mat-divider></mat-divider>
     <mat-form-field appearance="fill">
@@ -45,22 +45,13 @@
     >
       <mat-icon>search</mat-icon>Search
     </button>
+    <div *ngIf="errorMessage" class="error-message" style="margin-bottom: 5px">
+      {{ errorMessage }}
+    </div>
     <div class="item-container">
       <ng-container *ngFor="let product of filterdProducts; let i = index">
         <app-item-card [product]="product"></app-item-card>
       </ng-container>
     </div>
   </form>
-
-  <h2>Product Details</h2>
-  <ul class="product-list">
-    <li
-      *ngFor="let product of products"
-      [class.selected]="product._id === selectedId"
-    >
-      <a [routerLink]="['/item', product._id]">
-        <span class="badge">{{ product._id }}</span>
-      </a>
-    </li>
-  </ul>
 </div>
