@@ -26,6 +26,11 @@ export class AuthService {
     return this.http.post(url, user);
   }
 
+  findUserByNameOrEmail(user: string): Observable<any> {
+    const url = this.configUrl + '/users/unique';
+    return this.http.post(url, user);
+  }
+
   getUser(): Observable<User> {
     return of({ name: 'xx', phone: 'xx', email: 'xx' });
   }

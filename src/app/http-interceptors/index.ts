@@ -9,3 +9,5 @@ export const httpInterceptorProviders = [
   { provide: HTTP_INTERCEPTORS, useClass: ErrorInterceptor, multi: true },
   { provide: HTTP_INTERCEPTORS, useClass: AuthInterceptor, multi: true },
 ];
+
+// userClass...multi:When true, injector returns an array of instances

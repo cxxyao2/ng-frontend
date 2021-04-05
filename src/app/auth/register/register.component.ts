@@ -15,7 +15,9 @@ export class RegisterComponent implements OnInit {
   hidePassword = true;
   hideRepeatPassword = true;
   myForm!: FormGroup;
-
+  // 1 uppercase ,1 lowercase, 1 number, 1 special sign
+  // /^(?=(?:.*[0-9]){1,})(?=(?:.*[!@#$%^&*]){1,})(?=(?:.*[a-z]){1,})(?=(?:.*[A-Z]){1,}).{8,}$/g
+  passwordPattern = '[A-Za-z]{3}';
   get fullName() {
     return this.myForm.get('fullName');
   }
@@ -40,7 +42,7 @@ export class RegisterComponent implements OnInit {
   createForm() {
     this.myForm = this.fb.group(
       {
-        fullName: ['', [Validators.required]],
+        fullName: ['', [Validators.required, Validators.minLength(4)]],
         email: ['', [Validators.required, Validators.email]],
         password: ['', [Validators.required]],
         repeatPassword: ['', [Validators.required]],
@@ -52,11 +54,11 @@ export class RegisterComponent implements OnInit {
   }
 
   getErrorMessage() {
-    if (this.email.hasError('required')) {
+    if (this.email?.hasError('required')) {
       return 'You must enter a value';
     }
 
-    return this.email.hasError('email') ? 'Not a valid email' : '';
+    return this.email?.hasError('email') ? 'Not a valid email' : '';
   }
 
   onSubmit() {

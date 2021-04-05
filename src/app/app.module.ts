@@ -18,6 +18,9 @@ import { AdminModule } from './admin/admin.module';
 import { AuthModule } from './auth/auth.module';
 import { CartModule } from './cart/cart.module';
 import { httpInterceptorProviders } from './http-interceptors';
+import { CreatePasswordStrengthDirective } from './share/create-password-strength.directive';
+import { UniqueUserDirective } from './share/unique-user.directive';
+import { IdentifyPasswordDirective } from './share/identify-password.directive';
 
 @NgModule({
   declarations: [
@@ -28,6 +31,9 @@ import { httpInterceptorProviders } from './http-interceptors';
     HomepageComponent,
     PageNotFoundComponent,
     ChannelComponent,
+    CreatePasswordStrengthDirective,
+    UniqueUserDirective,
+    IdentifyPasswordDirective,
   ],
   imports: [
     BrowserModule,

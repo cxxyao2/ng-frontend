@@ -31,7 +31,7 @@ export class ErrorInterceptor implements HttpInterceptor {
         }
         // console.log('error response', JSON.stringify(error));
 
-        window.alert(errorMessage);
+       //  window.alert(errorMessage);
         return throwError(errorMessage);
       })
     );

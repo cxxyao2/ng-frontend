@@ -4,7 +4,7 @@
     <div class="example-container item-list">
       <mat-form-field appearance="fill">
         <mat-label>Enter your name</mat-label>
-        <input matInput formControlName="fullName" />
+        <input matInput formControlName="fullName" required />
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Enter your email</mat-label>
@@ -14,7 +14,7 @@
           formControlName="email"
           required
         />
-        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+        <mat-error *ngIf="email?.invalid">{{ getErrorMessage() }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>
@@ -22,13 +22,17 @@
           matInput
           formControlName="password"
           [type]="hidePassword ? 'password' : 'text'"
+          required
+          pattern="passwordPattern"
         />
         <button
           mat-icon-button
           matSuffix
           (click)="hidePassword = !hidePassword"
           [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hide"
+          [attr.aria-pressed]="hidePassword"
+          required
+          pattern="passwordPattern"
         >
           <mat-icon>{{
             hidePassword ? "visibility_off" : "visibility"
@@ -47,7 +51,7 @@
           matSuffix
           (click)="hideRepeatPassword = !hideRepeatPassword"
           [attr.aria-label]="'Hide repeat-password'"
-          [attr.aria-pressed]="hide"
+          [attr.aria-pressed]="hideRepeatPassword"
         >
           <mat-icon>{{
             hideRepeatPassword ? "visibility_off" : "visibility"
