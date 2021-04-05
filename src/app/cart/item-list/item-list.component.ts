@@ -97,6 +97,10 @@ export class ItemListComponent implements OnInit, AfterViewChecked {
             this.cartSrv.deleteItem(item);
             if (savedItem.length === this.selection.selected.length) {
               this.cartSrv.clear();
+              this.cartSrv.getItems().subscribe((data) => {
+                this.itemsInCart = data;
+                this.dataSource = new MatTableDataSource<Item>(data);
+              });
               this.saveSucceedMessage = 'Data is saved successfully.';
             }
           },
@@ -106,18 +110,11 @@ export class ItemListComponent implements OnInit, AfterViewChecked {
           () => console.log('HTTP request completed.')
         )
     );
-
-    this.cartSrv.getItems().subscribe((data) => {
-      this.itemsInCart = data;
-      this.dataSource = new MatTableDataSource<Item>(data);
-      console.log('data is ', this.dataSource);
-    });
   }
 
   getLoadingMessage(): string {
     return this.saveSucceedMessage === ''
-      ? 'Char is Loading...'
-      : 'Char is empty.';
-    // "aa"}}Loading items in cart...
+      ? 'Cart is Loading...'
+      : 'Cart is empty.';
   }
 }

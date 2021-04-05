@@ -1,1 +1,60 @@
-<p>register works!</p>
+<div class="content" role="main">
+  <h2>Register</h2>
+  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+    <div class="example-container item-list">
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your name</mat-label>
+        <input matInput formControlName="fullName" />
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your email</mat-label>
+        <input
+          matInput
+          placeholder="pat@example.com"
+          formControlName="email"
+          required
+        />
+        <mat-error *ngIf="email.invalid">{{ getErrorMessage() }}</mat-error>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Enter your password</mat-label>
+        <input
+          matInput
+          formControlName="password"
+          [type]="hidePassword ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hidePassword = !hidePassword"
+          [attr.aria-label]="'Hide password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{
+            hidePassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Repeat your password</mat-label>
+        <input
+          matInput
+          formControlName="repeatPassword"
+          [type]="hideRepeatPassword ? 'password' : 'text'"
+        />
+        <button
+          mat-icon-button
+          matSuffix
+          (click)="hideRepeatPassword = !hideRepeatPassword"
+          [attr.aria-label]="'Hide repeat-password'"
+          [attr.aria-pressed]="hide"
+        >
+          <mat-icon>{{
+            hideRepeatPassword ? "visibility_off" : "visibility"
+          }}</mat-icon>
+        </button>
+      </mat-form-field>
+    </div>
+    <button mat-raised-button color="primary">Submit</button>
+  </form>
+</div>

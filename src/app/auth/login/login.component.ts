@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 
+import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+
 @Component({
   selector: 'login',
   templateUrl: './login.component.html',
@@ -9,13 +11,12 @@ export class LoginComponent implements OnInit {
   userName = '';
   userEmail = '';
   userPassword = '';
-  userRepeatPassword = '';
 
   constructor() {}
 
   ngOnInit(): void {}
 
-  // entr
+  // entre
   // name,email:unique, asynchronize validateor
   // password, repeat-password validator
 
@@ -26,4 +27,6 @@ export class LoginComponent implements OnInit {
   onEnterEmail(value: string) {
     this.userEmail = value;
   }
+
+  submit() {}
 }

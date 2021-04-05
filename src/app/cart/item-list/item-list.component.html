@@ -1,7 +1,7 @@
 <div class="content" role="main">
-  <form (ngSubmit)="submit()">
+  <form class="item-list" (ngSubmit)="submit()">
     <h2>Items in cart</h2>
-    <div class="item-list">
+    <div>
       <div
         *ngIf="saveSucceedMessage.length >= 1"
         [class.succeed-message]="saveSucceedMessage.length >= 1"

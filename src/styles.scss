@@ -55,11 +55,13 @@ footer {
   display: flex;
   margin: 70px auto 5px;
   padding: 5px;
-  max-width: 960px;
+  max-width: 600px;
   min-height: 600px;
   flex-direction: column;
   justify-content: flex-start;
   align-items: center;
+  border-radius: 5px;
+  box-shadow: 0 2px 5px gray;
 }
 
 .material-icons.md-18 {
@@ -83,4 +85,11 @@ footer {
 .marginY {
   margin-top: 5px !important;
   margin-bottom: 5px !important;
+}
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  justify-content: flex-start;
 }
