@@ -4,12 +4,12 @@
 
 # validator
 
-> AsyncValidator
-> syncValidator
+- AsyncValidator
+- syncValidator
 
 # Backend
 
-> Node.js, express
+- Node.js, express
 
 # Chart
 
@@ -17,9 +17,9 @@
 
 # Test
 
-> UT
-> IT
-> e2e
+- UT
+- IT
+- e2e
 
 # Others
 
