@@ -1,57 +1,63 @@
 <div class="content" role="main">
-  <form class="newcart" (ngSubmit)="submit()">
-    <mat-form-field>
-      <mat-label>Customer</mat-label>
-      <input
-        type="text"
-        required
-        matInput
-        placeholder="Search for a customer"
-        [formControl]="customerControl"
-        [matAutocomplete]="auto"
-      />
-      <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
-        <mat-option
-          *ngFor="let customer of filteredCustomers | async"
-          [value]="customer"
-        >
-          {{ customer.name | titlecase }}
-        </mat-option>
-      </mat-autocomplete>
-    </mat-form-field>
-    <mat-card>
-      <p style="font-size: 1.1rem">Customer Information:</p>
-      <p>Name:&nbsp;&nbsp;{{ enteredCustomer.name | titlecase }}</p>
-      <p>Telephone No.:&nbsp;{{ enteredCustomer.phone }}</p>
-      <p>Region:&nbsp;{{ enteredCustomer.region }}</p>
-    </mat-card>
-    <mat-divider></mat-divider>
-    <mat-form-field appearance="fill">
-      <mat-label>Category</mat-label>
-      <mat-select #matSelect required>
-        <ng-container *ngFor="let category of categories">
-          <mat-option [value]="category._id">{{ category.name }}</mat-option>
+  <div class="newcart">
+    <form (ngSubmit)="submit()">
+      <mat-form-field>
+        <mat-label>Customer</mat-label>
+        <input
+          type="text"
+          required
+          matInput
+          placeholder="Search for a customer"
+          [formControl]="customerControl"
+          [matAutocomplete]="auto"
+        />
+        <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+          <mat-option
+            *ngFor="let customer of filteredCustomers | async"
+            [value]="customer"
+          >
+            {{ customer.name | titlecase }}
+          </mat-option>
+        </mat-autocomplete>
+      </mat-form-field>
+      <mat-card>
+        <p style="font-size: 1.1rem">Customer Information:</p>
+        <p>Name:&nbsp;&nbsp;{{ enteredCustomer.name | titlecase }}</p>
+        <p>Telephone No.:&nbsp;{{ enteredCustomer.phone }}</p>
+        <p>Region:&nbsp;{{ enteredCustomer.region }}</p>
+      </mat-card>
+      <mat-divider></mat-divider>
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select #matSelect required>
+          <ng-container *ngFor="let category of categories">
+            <mat-option [value]="category._id">{{ category.name }}</mat-option>
+          </ng-container>
+        </mat-select>
+      </mat-form-field>
+      <mat-form-field appearance="fill">
+        <mat-label>Product Name...</mat-label>
+        <input matInput (keyup)="changeProductKey($event)" />
+      </mat-form-field>
+      <button
+        mat-raised-button
+        color="primary"
+        aria-label="Button with a search icon"
+      >
+        <mat-icon>search</mat-icon>Search
+      </button>
+      <div
+        *ngIf="errorMessage"
+        class="error-message"
+        style="margin-bottom: 5px"
+      >
+        {{ errorMessage }}
+      </div>
+      <div class="item-container">
+        <ng-container *ngFor="let product of filterdProducts; let i = index">
+          <app-item-card [product]="product"></app-item-card>
         </ng-container>
-      </mat-select>
-    </mat-form-field>
-    <mat-form-field appearance="fill">
-      <mat-label>Product Name...</mat-label>
-      <input matInput (keyup)="changeProductKey($event)" />
-    </mat-form-field>
-    <button
-      mat-raised-button
-      color="primary"
-      aria-label="Button with a search icon"
-    >
-      <mat-icon>search</mat-icon>Search
-    </button>
-    <div *ngIf="errorMessage" class="error-message" style="margin-bottom: 5px">
-      {{ errorMessage }}
-    </div>
-    <div class="item-container">
-      <ng-container *ngFor="let product of filterdProducts; let i = index">
-        <app-item-card [product]="product"></app-item-card>
-      </ng-container>
-    </div>
-  </form>
+      </div>
+    </form>
+  </div>
 </div>

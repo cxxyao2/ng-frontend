@@ -5,3 +5,7 @@
 input.example-right-align {
   -moz-appearance: textfield;
 }
+
+.register-form button + button {
+  margin-left: 10px;
+}

@@ -1,10 +1,15 @@
 <div class="content" role="main">
   <h2>Register</h2>
-  <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+  <div class="register-form">
+
+  <form [formGroup]="myForm" #formDir="ngForm" (ngSubmit)="onSubmit()">
     <div class="example-container item-list">
       <mat-form-field appearance="fill">
         <mat-label>Enter your name</mat-label>
         <input matInput formControlName="fullName" required />
+        <mat-error *ngIf="fullName?.invalid">{{
+          getNameErrorMessage()
+        }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Enter your email</mat-label>
@@ -14,7 +19,9 @@
           formControlName="email"
           required
         />
-        <mat-error *ngIf="email?.invalid">{{ getErrorMessage() }}</mat-error>
+        <mat-error *ngIf="email?.invalid">{{
+          getEmailErrorMessage()
+        }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Enter your password</mat-label>
@@ -38,6 +45,9 @@
             hidePassword ? "visibility_off" : "visibility"
           }}</mat-icon>
         </button>
+        <mat-error *ngIf="password?.invalid">{{
+          getPasswordMessage()
+        }}</mat-error>
       </mat-form-field>
       <mat-form-field appearance="fill">
         <mat-label>Repeat your password</mat-label>
@@ -57,8 +67,21 @@
             hideRepeatPassword ? "visibility_off" : "visibility"
           }}</mat-icon>
         </button>
+        <mat-error *ngIf="repeatPassword?.invalid">{{
+          getRepeatPasswordMessage()
+        }}</mat-error>
       </mat-form-field>
     </div>
     <button mat-raised-button color="primary">Submit</button>
+    <button
+      type="button"
+      mat-raised-button
+      color="accent"
+      (click)="formDir.resetForm({})"
+    >
+      Reset
+    </button>
+    <mat-error *ngIf="myForm.invalid"> Form is invalid. </mat-error>
   </form>
+  </div>
 </div>

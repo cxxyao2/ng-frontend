@@ -35,10 +35,10 @@ export class AuthService {
     return of({ name: 'xx', phone: 'xx', email: 'xx' });
   }
 
-  // TODO
-  // getUsers()：Observable<User[]> {
-  //   return of([{ name: 'xx', phone: 'xx', email: 'xx' }]);
-  // }
+  getCurrentUser() {
+    const user = jwt_decode(this.getToken());
+    return of(user);
+  }
 
   login(user: User) {
     const url = this.configUrl + '/users';

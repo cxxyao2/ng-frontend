@@ -21,6 +21,7 @@ import { httpInterceptorProviders } from './http-interceptors';
 import { CreatePasswordStrengthDirective } from './share/create-password-strength.directive';
 import { UniqueUserDirective } from './share/unique-user.directive';
 import { IdentifyPasswordDirective } from './share/identify-password.directive';
+import { ForbiddenNameDirective } from './share/forbidden-name.directive';
 
 @NgModule({
   declarations: [
@@ -34,6 +35,7 @@ import { IdentifyPasswordDirective } from './share/identify-password.directive';
     CreatePasswordStrengthDirective,
     UniqueUserDirective,
     IdentifyPasswordDirective,
+    ForbiddenNameDirective,
   ],
   imports: [
     BrowserModule,
