@@ -15,7 +15,7 @@ import { Product } from '../../Product';
 })
 export class ItemDetailsComponent implements OnInit, OnDestroy {
   product!: Product;
-  id: string = '';
+  id = '';
   testMessage = '';
   constructor(
     private route: ActivatedRoute,

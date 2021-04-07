@@ -4,12 +4,13 @@ import { Observable, of } from 'rxjs';
 import { tap, catchError, map } from 'rxjs/operators';
 import { User } from '../User';
 import jwt_decode from 'jwt-decode';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class AuthService {
-  configUrl = 'http://localhost:5000/api';
+  configUrl = environment.apiUrl;
   tokenKey = 'token';
   currentUser: any;
 
@@ -61,7 +62,7 @@ export class AuthService {
     localStorage.setItem(this.tokenKey, jwt);
     this.setCurrentUser();
   }
-  
+
   setCurrentUser() {
     const jwt = localStorage.getItem(this.tokenKey);
     if (jwt && jwt.length >= 1) {

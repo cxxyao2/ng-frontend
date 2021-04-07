@@ -85,7 +85,7 @@ export class ItemListComponent implements OnInit, AfterViewChecked {
     this.selection.selected.map((item) =>
       this.orderSrv
         .addOrder({
-          customerId: customerId,
+          customerId,
           productId: item.id,
           quantity: item.quantity,
           price: 10,

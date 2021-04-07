@@ -12,13 +12,14 @@ import { Customer } from '../../Customer';
 
 import { ProductService } from '../../service/product.service';
 import { MatSelect } from '@angular/material/select';
+import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'new-cart',
   templateUrl: './newcart.component.html',
   styleUrls: ['./newcart.component.scss'],
 })
-export class NewCartComponent implements OnInit,AfterViewInit {
+export class NewCartComponent implements OnInit, AfterViewInit {
   @ViewChild('matSelect') matSelect!: MatSelect;
   customerControl = new FormControl();
   errorMessage = '';
@@ -36,30 +37,8 @@ export class NewCartComponent implements OnInit,AfterViewInit {
   products: Product[] = [];
   filterdProducts: Product[] = [];
   selectedProductId = '';
-  customers: Customer[] = [
-    {
-      _id: '60503a4d93e7f9838333a4ff',
-      name: 'rolling jack',
-      phone: '12345678',
-      region: 'Montreal',
-    },
-    {
-      _id: '600348c1ffda942b5e855637',
-      name: 'Mike jakshon',
-      phone: '12345678',
-      region: 'Montreal',
-    },
-    {
-      _id: '5f9e3158ad9cfb1ef829357e',
-      name: 'Jane ire',
-      phone: '12345678',
-      region: 'Montreal',
-    },
-  ];
-  categories: Category[] = [
-    { _id: '600103a5ffa4a7376471d64f', name: 'butane golden' },
-    { _id: '60553ff93a84ce83f3ef5f51', name: 'butane silver' },
-  ];
+  customers: Customer[] = [];
+  categories: Category[] = [];
 
   constructor(
     private cartService: CartService,
@@ -68,8 +47,8 @@ export class NewCartComponent implements OnInit,AfterViewInit {
   ) {}
 
   ngAfterViewInit(): void {
-    //Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
-    //Add 'implements AfterViewInit' to the class.
+    // Called after ngAfterContentInit when the component's view has been initialized. Applies to components only.
+    // Add 'implements AfterViewInit' to the class.
     this.matSelect.valueChange.subscribe((value: string) => {
       this.enteredCategoryId = value;
     });
@@ -81,6 +60,12 @@ export class NewCartComponent implements OnInit,AfterViewInit {
     });
     this.productSer.getProducts().subscribe((data) => {
       this.products = data;
+    });
+    this.productSer.getCustomers().subscribe((data) => {
+      this.customers = data;
+    });
+    this.productSer.getCategories().subscribe((data) => {
+      this.categories = data;
     });
     this.filteredCustomers = this.customerControl.valueChanges.pipe(
       startWith(''),

@@ -150,7 +150,7 @@ export class RegisterComponent implements OnInit {
       })
       .subscribe(
         (data) => {
-          this.authService.loginWithJwt(data['token']);
+          this.authService.loginWithJwt(data.token);
           this.router.navigate(['/']);
         },
         (error) => {

@@ -4,12 +4,13 @@ import { Observable, throwError, of } from 'rxjs';
 import { catchError, retry } from 'rxjs/operators';
 
 import { Order } from '../Order';
+import { environment } from '../../environments/environment';
 
 @Injectable({
   providedIn: 'root',
 })
 export class OrderService {
-  configUrl = 'http://localhost:5000/api' + '/orders';
+  configUrl = environment.apiUrl + '/orders';
 
   constructor(private http: HttpClient) {}
 

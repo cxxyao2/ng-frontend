@@ -1,8 +1,12 @@
-import { UniqueUserDirective } from './unique-user.directive';
+import {
+  UniqueUserDirective,
+  UniqueUserValidator,
+} from './unique-user.directive';
 
 describe('UniqueUserDirective', () => {
   it('should create an instance', () => {
-    const directive = new UniqueUserDirective();
-    expect(directive).toBeTruthy();
+    // const va = new UniqueUserValidator
+    // // const directive = new UniqueUserDirective();
+    // expect(directive).toBeTruthy();
   });
 });

@@ -7,7 +7,7 @@
     <form [formGroup]="myForm" #formDir="ngForm" (ngSubmit)="onSubmit()">
       <div class="example-container item-list">
         <mat-form-field appearance="fill">
-          <mat-label>Enter your name or email</mat-label>
+          <mat-label>Enter your email</mat-label>
           <input matInput formControlName="fullName" required />
           <mat-error
             *ngIf="
