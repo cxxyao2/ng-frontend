@@ -1,6 +1,7 @@
 # NgFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
+Deployed on Github: https://cxxyao2.github.io/ng-frontend
 
 ## Development server
 
