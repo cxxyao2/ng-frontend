@@ -1,5 +1,17 @@
 # Angular Material
 
+# Route guard: canActive
+
+# Pipe
+
+# Router
+
+# Rxjs
+
+# Typescript
+
+# Animation
+
 # HttpInterceptor
 
 # validator
@@ -9,7 +21,7 @@
 
 # Backend
 
-- Node.js, express
+- Node.js, express, Mongodb, Mysql
 
 # Chart
 
@@ -23,4 +35,4 @@
 
 # Others
 
-> RegExp: Regular Expression (e.g. password)
+- RegExp: Regular Expression

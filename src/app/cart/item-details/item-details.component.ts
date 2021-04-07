@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, OnDestroy } from '@angular/core';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { switchMap, tap } from 'rxjs/operators';
 import { Observable } from 'rxjs';
@@ -13,9 +13,10 @@ import { Product } from '../../Product';
   templateUrl: './item-details.component.html',
   styleUrls: ['./item-details.component.scss'],
 })
-export class ItemDetailsComponent implements OnInit {
+export class ItemDetailsComponent implements OnInit, OnDestroy {
   product!: Product;
   id: string = '';
+  testMessage = '';
   constructor(
     private route: ActivatedRoute,
     private router: Router,
@@ -33,13 +34,27 @@ export class ItemDetailsComponent implements OnInit {
     });
   }
 
-  //params  localhost:4200/heroes;id=15;foo=foo  or /heros/:id/:foo
+  ngOnDestroy(): void {
+    console.log('imte-detail ngOnDestroy');
+  }
+
+  prevItem(): void {
+    this.testMessage = 'prev';
+    this.router.navigate(['/item', '60010569ffa4a7376471d656']);
+  }
+
+  afterItem(): void {
+    this.testMessage = 'after';
+    this.router.navigate(['/item', '6001057effa4a7376471d658']);
+  }
+
+  // params  localhost:4200/heroes;id=15;foo=foo  or /heros/:id/:foo
   // not equals queryParams  localhost:4200/heroes?id=15;foo=foo
-  gotoPlaceOrder() {
+  gotoPlaceOrder(): void {
     const itemId = this.product ? this.product._id : null;
     this.router.navigate(['/order', { id: itemId, foo: 'only_for_fun_foo' }]);
   }
-  //this.productService.getProduct(id)
+  // this.productService.getProduct(id)
   // .subscribe(data=>this.ddd= {id:(data as any).id,
   // name:(data as any).id});
 }

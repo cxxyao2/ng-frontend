@@ -17,7 +17,9 @@ export class UniqueUserValidator implements AsyncValidator {
     ctrl: AbstractControl
   ): Promise<ValidationErrors | null> | Observable<ValidationErrors | null> {
     return this.userService.findUserByNameOrEmail(ctrl.value).pipe(
-      map((user) => (user && user.length > 0 ? { userExists: true } : null)),
+      map((user) => {
+        return user ? { userExists: true } : null;
+      }),
       catchError(() => of(null))
     );
   }

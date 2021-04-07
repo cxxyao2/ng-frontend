@@ -4,9 +4,10 @@ import { HomepageComponent } from './menu/homepage/homepage.component';
 import { ChannelComponent } from './channel/channel.component';
 
 import { PageNotFoundComponent } from './menu/page-not-found/page-not-found.component';
+import { AuthGuard } from './service/auth-guard.service';
 
 const routes: Routes = [
-  { path: 'channel', component: ChannelComponent },
+  { path: 'channel', component: ChannelComponent, canActivate: [AuthGuard] },
   { path: 'home', component: HomepageComponent },
   {
     path: '',
@@ -18,6 +19,7 @@ const routes: Routes = [
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],
+  providers: [AuthGuard],
   exports: [RouterModule],
 })
 export class AppRoutingModule {}

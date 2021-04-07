@@ -1,87 +1,117 @@
 <div class="content" role="main">
   <h2>Register</h2>
   <div class="register-form">
+    <form [formGroup]="myForm" #formDir="ngForm" (ngSubmit)="onSubmit()">
+      <div class="example-container item-list">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your name</mat-label>
+          <input matInput formControlName="fullName" required />
+          <mat-error *ngIf="fullName?.touched && fullName?.invalid">
+            {{ getNameMessage() }}</mat-error
+          >
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your email</mat-label>
+          <input
+            matInput
+            placeholder="pat@example.com"
+            formControlName="email"
+            required
+          />
+          <mat-error *ngIf="email?.touched && email?.invalid">
+            {{ getEmailMessage() }}
+          </mat-error>
+        </mat-form-field>
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            [type]="hidePassword ? 'password' : 'text'"
+            required
+            pattern="{{ passwordPattern }}"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword"
+          >
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
 
-  <form [formGroup]="myForm" #formDir="ngForm" (ngSubmit)="onSubmit()">
-    <div class="example-container item-list">
-      <mat-form-field appearance="fill">
-        <mat-label>Enter your name</mat-label>
-        <input matInput formControlName="fullName" required />
-        <mat-error *ngIf="fullName?.invalid">{{
-          getNameErrorMessage()
-        }}</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Enter your email</mat-label>
-        <input
-          matInput
-          placeholder="pat@example.com"
-          formControlName="email"
-          required
-        />
-        <mat-error *ngIf="email?.invalid">{{
-          getEmailErrorMessage()
-        }}</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Enter your password</mat-label>
-        <input
-          matInput
-          formControlName="password"
-          [type]="hidePassword ? 'password' : 'text'"
-          required
-          pattern="passwordPattern"
-        />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="hidePassword = !hidePassword"
-          [attr.aria-label]="'Hide password'"
-          [attr.aria-pressed]="hidePassword"
-          required
-          pattern="passwordPattern"
-        >
-          <mat-icon>{{
-            hidePassword ? "visibility_off" : "visibility"
-          }}</mat-icon>
-        </button>
-        <mat-error *ngIf="password?.invalid">{{
-          getPasswordMessage()
-        }}</mat-error>
-      </mat-form-field>
-      <mat-form-field appearance="fill">
-        <mat-label>Repeat your password</mat-label>
-        <input
-          matInput
-          formControlName="repeatPassword"
-          [type]="hideRepeatPassword ? 'password' : 'text'"
-        />
-        <button
-          mat-icon-button
-          matSuffix
-          (click)="hideRepeatPassword = !hideRepeatPassword"
-          [attr.aria-label]="'Hide repeat-password'"
-          [attr.aria-pressed]="hideRepeatPassword"
-        >
-          <mat-icon>{{
-            hideRepeatPassword ? "visibility_off" : "visibility"
-          }}</mat-icon>
-        </button>
-        <mat-error *ngIf="repeatPassword?.invalid">{{
-          getRepeatPasswordMessage()
-        }}</mat-error>
-      </mat-form-field>
-    </div>
-    <button mat-raised-button color="primary">Submit</button>
-    <button
-      type="button"
-      mat-raised-button
-      color="accent"
-      (click)="formDir.resetForm({})"
-    >
-      Reset
-    </button>
-    <mat-error *ngIf="myForm.invalid"> Form is invalid. </mat-error>
-  </form>
+          <mat-error *ngIf="password?.touched && password?.invalid">{{
+            getPasswordMessage()
+          }}</mat-error>
+        </mat-form-field>
+        <mat-accordion>
+          <mat-expansion-panel
+            (opened)="panelOpenState = true"
+            (closed)="panelOpenState = false"
+          >
+            <mat-expansion-panel-header>
+              <mat-panel-title> Password Rule </mat-panel-title>
+              <mat-panel-description> For more details </mat-panel-description>
+            </mat-expansion-panel-header>
+            <p>
+              Password should include at least 1 uppercase character, 1
+              lowercase character, 1 number and 1 special sign(!@#$%^&*)
+            </p>
+          </mat-expansion-panel>
+        </mat-accordion>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Repeat your password</mat-label>
+          <input
+            matInput
+            formControlName="repeatPassword"
+            [type]="hideRepeatPassword ? 'password' : 'text'"
+            required
+            pattern="{{ passwordPattern }}"
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hideRepeatPassword = !hideRepeatPassword"
+            [attr.aria-label]="'Hide repeat-password'"
+            [attr.aria-pressed]="hideRepeatPassword"
+          >
+            <mat-icon>{{
+              hideRepeatPassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+          <mat-error
+            *ngIf="repeatPassword?.touched && repeatPassword?.invalid"
+            >{{ getRepeatPasswordMessage() }}</mat-error
+          >
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary">Submit</button>
+      <button
+        type="button"
+        mat-raised-button
+        color="accent"
+        (click)="formDir.resetForm({})"
+      >
+        Reset
+      </button>
+      <mat-error
+        *ngIf="
+          myForm?.touched &&
+          myForm?.invalid &&
+          repeatPassword?.value.length > 0 &&
+          myForm?.errors?.identifyPassword
+        "
+      >
+        RepeatPassword should be equal to assword.
+      </mat-error>
+
+      <mat-error *ngIf="exceptionalError.length > 0">{{
+        exceptionalError
+      }}</mat-error>
+    </form>
   </div>
 </div>

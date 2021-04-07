@@ -9,3 +9,9 @@ input.example-right-align {
 .register-form button + button {
   margin-left: 10px;
 }
+
+.register-form .mat-accordion {
+  padding: 2px !important;
+  margin-top: 2px !important;
+  margin-bottom: 5px !important;
+}

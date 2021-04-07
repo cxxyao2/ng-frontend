@@ -1,1 +1,7 @@
-<p>channel works!</p>
+<div class="content" role="main">
+  Welcome &nbsp;&nbsp;{{ this.authService.currentUser?.name }}
+  <form>
+    <label for="name">Client Name:</label>
+    <input type="text" id="name" />
+  </form>
+</div>

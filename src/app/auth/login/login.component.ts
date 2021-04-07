@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
-import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
+import { Router, ActivatedRoute } from '@angular/router';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'login',
@@ -8,25 +10,64 @@ import { FormControl, FormGroup, FormBuilder } from '@angular/forms';
   styleUrls: ['./login.component.scss'],
 })
 export class LoginComponent implements OnInit {
-  userName = '';
-  userEmail = '';
-  userPassword = '';
+  hidePassword = true;
+  myForm!: FormGroup;
+  invalidLoginMessage = '';
 
-  constructor() {}
+  constructor(
+    private router: Router,
+    private route: ActivatedRoute,
+    private authService: AuthService
+  ) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void {
+    this.myForm = new FormGroup(
+      {
+        fullName: new FormControl('', {
+          validators: [Validators.required, Validators.minLength(5)],
+          updateOn: 'blur',
+        }),
+
+        password: new FormControl('', {
+          validators: [Validators.required],
+          updateOn: 'blur',
+        }),
+      },
+      { updateOn: 'submit' }
+    ); // <-- add custom validator at the FormGroup level
+  }
 
   // entre
   // name,email:unique, asynchronize validateor
   // password, repeat-password validator
 
-  onEnterName(value: string) {
-    this.userName = value;
+  get fullName() {
+    return this.myForm.get('fullName');
   }
 
-  onEnterEmail(value: string) {
-    this.userEmail = value;
+  get password() {
+    return this.myForm.get('password');
   }
 
-  submit() {}
+  onSubmit(): void {
+    this.invalidLoginMessage = '';
+    this.authService
+      .login(this.fullName?.value, this.password?.value)
+      .subscribe(
+        (result) => {
+          if (result) {
+            this.authService.loginWithJwt(result);
+            const returnUrl = this.route.snapshot.queryParamMap.get(
+              'returnUrl'
+            );
+            this.router.navigate([returnUrl || '/']);
+          } else {
+            this.invalidLoginMessage = 'Invalid name/email or password';
+          }
+        },
+        (error) => {
+          this.invalidLoginMessage = JSON.stringify(error);
+        }
+      );
+  }
 }

@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { CartService } from '../../service/cart.service';
+import { AuthService } from '../../service/auth.service';
 
 @Component({
   selector: 'toolbar',
@@ -8,9 +9,15 @@ import { CartService } from '../../service/cart.service';
 })
 export class ToolbarComponent implements OnInit {
   sideBarCollapsed = true;
-  constructor(public cartService: CartService) {}
-
-  ngOnInit(): void {}
+  constructor(
+    public cartService: CartService,
+    public authService: AuthService
+  ) {}
+  ngOnInit(): void {
+    if (!this.authService.currentUser) {
+      this.authService.setCurrentUser();
+    }
+  }
 
   showSideBar() {
     console.log('clicked');

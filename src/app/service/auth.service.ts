@@ -1,7 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, of } from 'rxjs';
-import { tap, catchError } from 'rxjs/operators';
+import { tap, catchError, map } from 'rxjs/operators';
 import { User } from '../User';
 import jwt_decode from 'jwt-decode';
 
@@ -11,6 +11,7 @@ import jwt_decode from 'jwt-decode';
 export class AuthService {
   configUrl = 'http://localhost:5000/api';
   tokenKey = 'token';
+  currentUser: any;
 
   // httpOptions = {
   //   headers: new HttpHeaders({
@@ -28,32 +29,53 @@ export class AuthService {
 
   findUserByNameOrEmail(user: string): Observable<any> {
     const url = this.configUrl + '/users/unique';
-    return this.http.post(url, user);
+    return this.http.post(url, { name: user });
   }
 
-  getUser(): Observable<User> {
-    return of({ name: 'xx', phone: 'xx', email: 'xx' });
+  getUser(id: string): Observable<any> {
+    // const url = this.configUrl + '/users/' + id;
+    // return this.http.get(url);
+    const url = this.configUrl + '/categories/' + '6001023affa4a7376471d64e';
+    return this.http.delete(url);
   }
 
-  getCurrentUser() {
-    const user = jwt_decode(this.getToken());
-    return of(user);
-  }
-
-  login(user: User) {
-    const url = this.configUrl + '/users';
-    let jwt = '';
-    this.http.post(url, user).subscribe((data) => {
-      jwt = JSON.stringify(data);
-    });
-    localStorage.setItem(this.tokenKey, jwt);
+  login(email: string, password: string): Observable<any> {
+    // name email + password
+    console.log('email is  ', email, ' password ', password);
+    const url = this.configUrl + '/auth';
+    return this.http.post(
+      url,
+      {
+        email,
+        password,
+      },
+      { responseType: 'text' }
+    );
   }
 
   getToken(): string {
     return localStorage.getItem(this.tokenKey) || '';
   }
 
+  loginWithJwt(jwt: string) {
+    localStorage.setItem(this.tokenKey, jwt);
+    this.setCurrentUser();
+  }
+  
+  setCurrentUser() {
+    const jwt = localStorage.getItem(this.tokenKey);
+    if (jwt && jwt.length >= 1) {
+      try {
+        this.currentUser = jwt_decode(jwt);
+      } catch (error) {
+        console.log('error', error);
+        this.currentUser = null;
+      }
+    }
+  }
+
   logout(): void {
     localStorage.removeItem(this.tokenKey);
+    window.location.reload();
   }
 }

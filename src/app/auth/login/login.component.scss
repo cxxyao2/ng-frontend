@@ -1,0 +1,17 @@
+.example-right-align {
+  text-align: right;
+}
+
+input.example-right-align {
+  -moz-appearance: textfield;
+}
+
+.login-form button + button {
+  margin-left: 10px;
+}
+
+.login-form .mat-accordion {
+  padding: 2px !important;
+  margin-top: 2px !important;
+  margin-bottom: 5px !important;
+}

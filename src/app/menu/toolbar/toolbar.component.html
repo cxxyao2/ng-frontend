@@ -7,19 +7,29 @@
   <ul class="main-navigation" role="navigation">
     <li><a class="nav-link" routerLink="/order">Order</a></li>
     <li><a class="nav-link" routerLink="/channel">Channel</a></li>
-    <li><a class="nav-link" routerLink="/admin">Admin</a></li>
-    <li><a class="nav-link" routerLink="/login">Login</a></li>
+    <li *ngIf="this.authService.currentUser?.isAdmin">
+      <a class="nav-link" routerLink="/admin">Admin</a>
+    </li>
+    <li *ngIf="!this.authService.currentUser?.name">
+      <a class="nav-link" routerLink="/login">Login</a>
+    </li>
+    <li *ngIf="this.authService.currentUser?.name">
+      <span style="margin-left: 5px; margin-right: 5px">{{
+        this.authService.currentUser?.name
+      }}</span>
+      <a class="nav-link" (click)="authService.logout()">Logout</a>
+    </li>
   </ul>
   <ng-container *ngIf="cartService.items.length">
-    <div class="shopping-cart-icon" >
+    <div class="shopping-cart-icon">
       <a routerLink="/item-list">
-      <mat-icon [matBadge]="cartService.getTotalQty()" matBadgeColor="warn"
-        >shopping_cart</mat-icon
-      >
-      <!-- Include text description of the icon's meaning for screen-readers -->
-      <span class="cdk-visually-hidden">
-        Shopping cart icon with overlaid badge showing the number
-      </span>
+        <mat-icon [matBadge]="cartService.getTotalQty()" matBadgeColor="warn"
+          >shopping_cart</mat-icon
+        >
+        <!-- Include text description of the icon's meaning for screen-readers -->
+        <span class="cdk-visually-hidden">
+          Shopping cart icon with overlaid badge showing the number
+        </span>
       </a>
     </div>
   </ng-container>

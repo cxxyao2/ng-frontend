@@ -1,1 +1,69 @@
-<div class="content" role="main">login</div>
+<div class="content" role="main">
+  <h2>Login</h2>
+  <div class="login-form">
+    <span class="succeed-message marginY">
+      <a class="nav-link" routerLink="/register">No account?Register</a>
+    </span>
+    <form [formGroup]="myForm" #formDir="ngForm" (ngSubmit)="onSubmit()">
+      <div class="example-container item-list">
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your name or email</mat-label>
+          <input matInput formControlName="fullName" required />
+          <mat-error
+            *ngIf="
+              fullName?.touched &&
+              fullName?.invalid &&
+              fullName?.errors?.required
+            "
+          >
+            This field is required</mat-error
+          >
+        </mat-form-field>
+
+        <mat-form-field appearance="fill">
+          <mat-label>Enter your password</mat-label>
+          <input
+            matInput
+            formControlName="password"
+            [type]="hidePassword ? 'password' : 'text'"
+            required
+          />
+          <button
+            mat-icon-button
+            matSuffix
+            (click)="hidePassword = !hidePassword"
+            [attr.aria-label]="'Hide password'"
+            [attr.aria-pressed]="hidePassword"
+          >
+            <mat-icon>{{
+              hidePassword ? "visibility_off" : "visibility"
+            }}</mat-icon>
+          </button>
+
+          <mat-error
+            *ngIf="
+              password?.touched &&
+              password?.invalid &&
+              password?.errors?.required
+            "
+          >
+            Password is required
+          </mat-error>
+        </mat-form-field>
+      </div>
+      <button mat-raised-button color="primary">Submit</button>
+      <button
+        type="button"
+        mat-raised-button
+        color="accent"
+        (click)="formDir.resetForm({})"
+      >
+        Reset
+      </button>
+
+      <mat-error *ngIf="invalidLoginMessage.length > 0">{{
+        invalidLoginMessage
+      }}</mat-error>
+    </form>
+  </div>
+</div>
