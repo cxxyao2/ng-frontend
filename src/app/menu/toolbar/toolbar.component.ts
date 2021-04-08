@@ -23,4 +23,9 @@ export class ToolbarComponent implements OnInit {
     console.log('clicked');
     this.sideBarCollapsed = !this.sideBarCollapsed;
   }
+
+  onCloseSideBar($event: any) {
+    console.log('sidebar event', $event);
+    this.sideBarCollapsed = true; // not show
+  }
 }

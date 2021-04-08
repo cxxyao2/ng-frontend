@@ -11,6 +11,8 @@
 .sidebar-content {
   display: flex;
   height: 100%;
+  width: 100%;
+  z-index: -1;
   align-items: center;
   justify-content: center;
   background-color: rgba(0, 0, 0, 0.16);
@@ -26,4 +28,20 @@
 
 .sidebar li {
   transition: all 1s;
+}
+
+
+.sidebar .nav-link:hover {
+  background-color: #90caf9;
+  border-radius: 4px;
+}
+
+.sidebar .nav-link {
+  text-decoration: none;
+  color: white;
+  font-size: 1.1rem;
+  font-weight: 400;
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial,
+    Lucida Grande, sans-serif;
+  text-transform: uppercase;
 }

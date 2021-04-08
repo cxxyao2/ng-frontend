@@ -36,5 +36,5 @@
 </div>
 <!-- TODO  sidebar 的控制-->
 <ng-container *ngIf="!sideBarCollapsed">
-  <app-sidebar></app-sidebar>
+  <app-sidebar (close)="onCloseSideBar($event)"></app-sidebar>
 </ng-container>
