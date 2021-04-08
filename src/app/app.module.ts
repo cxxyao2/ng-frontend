@@ -11,7 +11,6 @@ import { FooterbarComponent } from './menu/footerbar/footerbar.component';
 import { HomepageComponent } from './menu/homepage/homepage.component';
 import { MaterialCenterModule } from './material-center.module';
 import { PageNotFoundComponent } from './menu/page-not-found/page-not-found.component';
-import { SidebarComponent } from './menu/sidebar/sidebar.component';
 import { ToolbarComponent } from './menu/toolbar/toolbar.component';
 
 import { AdminModule } from './admin/admin.module';
@@ -28,7 +27,6 @@ import { ForbiddenNameDirective } from './share/forbidden-name.directive';
     AppComponent,
     ToolbarComponent,
     FooterbarComponent,
-    SidebarComponent,
     HomepageComponent,
     PageNotFoundComponent,
     ChannelComponent,
