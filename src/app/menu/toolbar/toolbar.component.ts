@@ -18,7 +18,6 @@ export class ToolbarComponent implements OnInit {
       this.authService.setCurrentUser();
     }
   }
-
   showSideBar() {
     console.log('clicked');
     this.sideBarCollapsed = !this.sideBarCollapsed;
