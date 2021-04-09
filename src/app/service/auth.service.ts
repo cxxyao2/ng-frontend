@@ -75,7 +75,7 @@ export class AuthService {
       try {
         this.currentUser = jwt_decode(jwt);
       } catch (error) {
-        console.log('error', error);
+     
         this.currentUser = null;
       }
     }

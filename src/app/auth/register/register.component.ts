@@ -100,7 +100,6 @@ export class RegisterComponent implements OnInit {
   }
 
   getEmailMessage() {
-    console.log('eror', this.email?.errors);
     if (this.email?.errors?.required) {
       return 'Name is required';
     }

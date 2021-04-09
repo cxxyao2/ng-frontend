@@ -38,7 +38,6 @@ export class ItemListComponent implements OnInit, AfterViewChecked {
     this.cartSrv.getItems().subscribe((data) => {
       this.itemsInCart = data;
       this.dataSource = new MatTableDataSource<Item>(data);
-      console.log('data is ', this.dataSource);
     });
   }
 

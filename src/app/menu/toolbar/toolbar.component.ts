@@ -25,12 +25,12 @@ export class ToolbarComponent implements OnInit {
     }
   }
   showSideBar(): void {
-    console.log('clicked');
+
     this.sideBarShow = true;
   }
 
   onCloseSideBar($event: any): void {
-    console.log('sidebar event', $event);
+
     this.sideBarShow = true; // not show
   }
 
@@ -40,6 +40,6 @@ export class ToolbarComponent implements OnInit {
 
   setColor($event: any): void {
     this.authService.setUserTheme($event);
-    console.log('color is', $event);
+    
   }
 }

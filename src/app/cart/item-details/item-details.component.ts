@@ -24,7 +24,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
-    console.log('item-detail ngOnInit ');
+
 
     this.route.paramMap.subscribe((params: ParamMap) => {
       this.id = params.get('id') || '';
@@ -35,7 +35,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   }
 
   ngOnDestroy(): void {
-    console.log('imte-detail ngOnDestroy');
+   
   }
 
   prevItem(): void {

@@ -16,12 +16,9 @@ export class ItemCardComponent implements OnInit {
   constructor(private cartService: CartService) {}
 
   // TODO:
-  // 1 根据产品ID,跳转到产品明细列表
-  // 显示产品定期销量，更多信息
-  // 2 考虑从服务器获取图片，懒加载
-  ngOnInit(): void {
-    console.log('hi,card item init');
-  }
+  // 1 ADD SALES DATA
+  // 2 GET IMAGES FROM REMOTE SERVER, LAZY LOADING
+  ngOnInit(): void {}
 
   setInitQty(): void {
     this.quantity = 1;

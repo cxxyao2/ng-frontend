@@ -43,14 +43,14 @@ export class OrderService {
    * @param result - optional value to return as the observable result
    */
   private handleError(error: any, caught: Observable<any>): Observable<any> {
-    console.log('error caught: ', error);
+   
     if (
       error &&
       error.error &&
       (error.error.status === 'INVALID_TOKEN' ||
         error.error.status === 'MAX_TOKEN_ISSUE_REACHED')
     ) {
-      console.log('token has expired');
+
       // this.logout(); this.router.navigate(['/login'])
       return error;
     }

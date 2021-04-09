@@ -1,6 +1,6 @@
 export const environment = {
   apiBaseUrl: 'undefined',
-  apiUrl: 'http://localhost:5000/api',
+  apiUrl: '',
   appName: 'undefined',
   awsPubKey: 'undefined',
   nodeEnv: 'undefined',
