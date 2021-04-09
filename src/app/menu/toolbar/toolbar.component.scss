@@ -10,14 +10,12 @@
   height: 60px;
   display: flex;
   align-items: center;
-  background-color: #1976d2;
   color: white;
   font-weight: 600;
   box-shadow: 0 2px 5px gray;
   overflow: hidden;
 }
 .toolbar button {
-  background-color: #1976d2;
   border: 0;
 }
 
@@ -54,11 +52,23 @@
 
 .toolbar .home-span {
   font-size: 1.1rem;
+  margin-left: 10px;
 }
 
 .toolbar .sidebar-button {
   margin: 0 15px !important;
 }
+
+.sidebar {
+  display: none;
+  position: absolute;
+  top: 0;
+  left: 0;
+  height: 100%;
+  width: 100%;
+  z-index: 2000;
+}
+
 @media screen and (max-width: 768px) {
   .toolbar ul.main-navigation {
     display: none;
@@ -66,6 +76,10 @@
 
   .toolbar .sidebar-button {
     display: inline-block !important;
+  }
+
+  .sidebar {
+    display: block;
   }
 }
 
@@ -79,18 +93,16 @@
 }
 
 .toolbar .shopping-cart-icon:hover {
-  background-color: #90caf9;
   box-shadow: 0 5px 10px gray;
   border-radius: 4px;
   width: 40px;
 }
 
-.toolbar .nav-link:hover {
-  background-color: #90caf9;
+.nav-link:hover {
   border-radius: 4px;
 }
 
-.toolbar .nav-link {
+.nav-link {
   text-decoration: none;
   color: white;
   font-size: 1.1rem;
@@ -98,4 +110,48 @@
   font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial,
     Lucida Grande, sans-serif;
   text-transform: uppercase;
+}
+
+.sidebar-container {
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: #eee;
+  color: black;
+  font-size: 0.9rem;
+  font-weight: 400;
+}
+
+.mat-drawer-inner-container {
+  width: 70%;
+  min-width: 300px;
+}
+
+.sidenav-link:hover {
+  border-radius: 4px;
+}
+
+.sidenav-link {
+  text-decoration: none;
+  font-family: Roboto, Helvetica Neue Light, Helvetica Neue, Helvetica, Arial,
+    Lucida Grande, sans-serif;
+  text-transform: uppercase;
+}
+
+.mat-drawer-inner-container ul {
+  list-style-position: inside;
+  list-style-type: none;
+  padding: 0;
+  margin: 0;
+}
+
+.mat-drawer-inner-container ul li {
+  padding: 5px 15px;
+  margin: 10px 0;
+}
+
+.sidebar .mat-icon-sm {
+  margin-right: 10px;
 }

@@ -1,6 +1,7 @@
-<toolbar></toolbar>
+<div [class.active-user]="this.authService.currentUser?.theme==='purple'">
+  <toolbar></toolbar>
 
   <router-outlet></router-outlet>
 
-
-<footerbar></footerbar>
+  <footerbar></footerbar>
+</div>

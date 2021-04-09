@@ -5,14 +5,13 @@ import { Observable } from 'rxjs';
 import { startWith, map } from 'rxjs/operators';
 
 import { CartService } from '../../service/cart.service';
-import { Item } from '../../Item';
+
 import { Product } from '../../Product';
 import { Category } from '../../Category';
 import { Customer } from '../../Customer';
 
 import { ProductService } from '../../service/product.service';
 import { MatSelect } from '@angular/material/select';
-import { environment } from '../../../environments/environment';
 
 @Component({
   selector: 'new-cart',

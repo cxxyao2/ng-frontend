@@ -1,2 +1,8 @@
-<p>Welcome to the report center!</p>
+<div class="content" role="main">
+  <h2>
+    Welcome &nbsp;&nbsp;{{ this.authService.currentUser?.name | titlecase }}
+  </h2>
+  The function is on development.
+</div>
+
 <router-outlet></router-outlet>

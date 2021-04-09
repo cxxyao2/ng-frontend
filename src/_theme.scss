@@ -2,6 +2,7 @@
 
 @include mat-core();
 
+$active-light: mat-palette($mat-purple, 100);
 $active-primary: mat-palette($mat-purple, 500);
 $active-accent: mat-palette($mat-yellow, 700);
 $active-warn: mat-palette($mat-red);
@@ -14,7 +15,7 @@ $active-theme: mat-light-theme($active-primary, $active-accent, $active-warn);
     background-color: mat-color($active-primary);
   }
   .sidebar li:hover {
-    background-color: mat-color($active-primary);
+    background-color: mat-color($active-light);
   }
   .error-message {
     color: mat-color($active-warn);
@@ -22,13 +23,28 @@ $active-theme: mat-light-theme($active-primary, $active-accent, $active-warn);
   .succeed-message {
     color: mat-color($active-primary);
   }
+
+  .toolbar {
+    background-color: mat-color($active-primary);
+  }
+  .toolbar button {
+    background-color: mat-color($active-primary);
+  }
+  .toolbar .shopping-cart-icon:hover {
+    background-color: mat-color($active-light);
+  }
+
+  .nav-link:hover {
+    background-color: mat-color($active-light);
+  }
 }
 
+$app-light: mat-palette($mat-blue, 100);
 $app-primary: mat-palette($mat-blue, 400);
 $app-warn: mat-palette($mat-orange, 900);
 
 .sidebar li:hover {
-  background-color: mat-color($app-primary);
+  background-color: mat-color($app-light);
 }
 .error-message {
   color: mat-color($app-warn);
@@ -36,4 +52,22 @@ $app-warn: mat-palette($mat-orange, 900);
 
 .succeed-message {
   color: mat-color($app-primary);
+}
+
+.toolbar {
+  background-color: mat-color($app-primary);
+}
+.toolbar button {
+  background-color: mat-color($app-primary);
+}
+.toolbar .shopping-cart-icon:hover {
+  background-color: mat-color($app-light);
+}
+
+.nav-link:hover {
+  background-color: mat-color($app-light);
+}
+
+.person-flash {
+  background-color: mat-color($app-primary);
 }

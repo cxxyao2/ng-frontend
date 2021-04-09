@@ -1,6 +1,7 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild } from '@angular/core';
 import { CartService } from '../../service/cart.service';
 import { AuthService } from '../../service/auth.service';
+import { MatRadioGroup } from '@angular/material/radio';
 
 @Component({
   selector: 'toolbar',
@@ -8,7 +9,12 @@ import { AuthService } from '../../service/auth.service';
   styleUrls: ['./toolbar.component.scss'],
 })
 export class ToolbarComponent implements OnInit {
-  sideBarCollapsed = true;
+  @ViewChild('theme') theme!: MatRadioGroup;
+  panelOpenState = false;
+  themeColor = '1';
+
+  sideBarShow = false;
+  showFiller = false;
   constructor(
     public cartService: CartService,
     public authService: AuthService
@@ -18,13 +24,22 @@ export class ToolbarComponent implements OnInit {
       this.authService.setCurrentUser();
     }
   }
-  showSideBar() {
+  showSideBar(): void {
     console.log('clicked');
-    this.sideBarCollapsed = !this.sideBarCollapsed;
+    this.sideBarShow = true;
   }
 
-  onCloseSideBar($event: any) {
+  onCloseSideBar($event: any): void {
     console.log('sidebar event', $event);
-    this.sideBarCollapsed = true; // not show
+    this.sideBarShow = true; // not show
+  }
+
+  selectColor($event: MouseEvent): void {
+    $event.stopPropagation();
+  }
+
+  setColor($event: any): void {
+    this.authService.setUserTheme($event);
+    console.log('color is', $event);
   }
 }

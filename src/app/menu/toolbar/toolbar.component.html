@@ -2,13 +2,13 @@
   <span class="material-icons md-24 sidebar-button" (click)="showSideBar()"
     >format_align_center</span
   >
-  <span class="home-span">CRM</span>
+  <span class="home-span"><a class="nav-link" routerLink="/home">CRM</a></span>
   <div class="spacer"></div>
   <ul class="main-navigation" role="navigation">
     <li><a class="nav-link" routerLink="/order">Order</a></li>
     <li><a class="nav-link" routerLink="/channel">Channel</a></li>
     <li *ngIf="this.authService.currentUser?.isAdmin">
-      <a class="nav-link" routerLink="/admin">Admin</a>
+      <a class="nav-link" routerLink="/channels-report">Admin</a>
     </li>
     <li *ngIf="!this.authService.currentUser?.name">
       <a class="nav-link" routerLink="/login">Login</a>
@@ -34,7 +34,136 @@
     </div>
   </ng-container>
 </div>
+
+<div class="sidebar" *ngIf="sideBarShow">
+  <mat-sidenav-container
+    class="sidebar-container"
+    (click)="sideBarShow = false"
+  >
+    <mat-sidenav class="mat-drawer-inner-container" mode="side" opened>
+      <ul>
+        <li>
+          <mat-icon
+            color="primary"
+            class="md-48"
+            style=""
+            aria-hidden="false"
+            aria-label=" avatar icon"
+            >account_circle</mat-icon
+          >
+          <mat-divider></mat-divider>
+        </li>
+        <li *ngIf="this.authService.currentUser?.name">
+          <mat-accordion #mat (click)="selectColor($event)">
+            <mat-expansion-panel
+              (opened)="panelOpenState = true"
+              (closed)="panelOpenState = false"
+            >
+              <mat-expansion-panel-header>
+                <mat-panel-title>
+                  {{ this.authService.currentUser?.name | titlecase }}
+                </mat-panel-title>
+                <mat-panel-description>
+                  Your favorite color:
+                </mat-panel-description>
+              </mat-expansion-panel-header>
+
+              <mat-radio-group aria-label="Select an option">
+                <mat-radio-button
+                  id="themeColor1"
+                  name="themeColor"
+                  value="1"
+                  #color1
+                  (click)="setColor(color1.value)"
+                  >Blue</mat-radio-button
+                >
+                <mat-radio-button
+                  id="themeColor2"
+                  name="themeColor"
+                  value="2"
+                  #color2
+                  (click)="setColor(color2.value)"
+                  >Purple</mat-radio-button
+                >
+              </mat-radio-group>
+            </mat-expansion-panel>
+          </mat-accordion>
+        </li>
+        <li *ngIf="!this.authService.currentUser?.name">
+          <a class="sidenav-link" routerLink="/login"
+            ><mat-icon
+              color="primary"
+              class="md-24 mat-icon-sm"
+              aria-hidden="false"
+              aria-label=" avatar icon"
+              >account_circle</mat-icon
+            >Login</a
+          >
+        </li>
+        <li *ngIf="this.authService.currentUser?.name">
+          <a class="sidenav-link" (click)="authService.logout()"
+            ><mat-icon
+              color="primary"
+              class="md-24 mat-icon-sm"
+              aria-hidden="false"
+              aria-label=" avatar icon"
+              >account_circle</mat-icon
+            >Logout</a
+          >
+        </li>
+        <li>
+          <a class="sidenav-link" routerLink="/order"
+            ><mat-icon
+              color="primary"
+              class="md-24 mat-icon-sm"
+              aria-hidden="false"
+              aria-label=" cart icon"
+              ><span class="material-icons-outlined">
+                shopping_cart
+              </span></mat-icon
+            >Order</a
+          >
+        </li>
+        <li>
+          <a class="sidenav-link" routerLink="/channel"
+            ><mat-icon
+              color="primary"
+              class="md-24 mat-icon-sm"
+              aria-hidden="false"
+              aria-label=" avatar icon"
+              >people_alt</mat-icon
+            >Channel</a
+          >
+        </li>
+        <li>
+          <a class="sidenav-link"
+            ><mat-icon
+              color="primary"
+              class="md-24 mat-icon-sm"
+              aria-hidden="false"
+              aria-label=" avatar icon"
+            >
+              insights
+            </mat-icon>
+            admin( on development)
+          </a>
+        </li>
+        <li>
+          <a class="sidenav-link" href="mailto:someone@example.com"
+            ><mat-icon
+              color="primary"
+              class="md-24 mat-icon-sm"
+              aria-hidden="false"
+              aria-label=" avatar icon"
+            >
+              drafts </mat-icon
+            >Follow US</a
+          >
+        </li>
+      </ul>
+    </mat-sidenav>
+    <mat-sidenav-content></mat-sidenav-content>
+  </mat-sidenav-container>
+</div>
+
 <!-- TODO  sidebar 的控制-->
-<ng-container *ngIf="!sideBarCollapsed">
-  <div>sidebar</div>
-</ng-container>

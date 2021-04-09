@@ -40,6 +40,14 @@ export class AuthService {
     return this.http.delete(url);
   }
 
+  setUserTheme(theme: number): void {
+    if (theme === 1) {
+      this.currentUser.theme = 'blue';
+    } else {
+      this.currentUser.theme = 'purple';
+    }
+  }
+
   login(email: string, password: string): Observable<any> {
     const url = this.configUrl + '/auth';
     return this.http.post(

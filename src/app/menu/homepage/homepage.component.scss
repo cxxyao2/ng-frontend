@@ -1,0 +1,38 @@
+.mat-progress-bar {
+  height: 30px;
+  margin: 10px;
+}
+
+.person-flash {
+  position: relative;
+  top: 0;
+  left: 0;
+  z-index: 2000;
+  width: 100%;
+}
+
+.open-close-container {
+  border: 1px solid #dddddd;
+  margin-top: 1em;
+  padding: 20px;
+  color: #000000;
+  font-weight: bold;
+  width: 100%;
+  text-align: center;
+}
+
+.homepage-ranking {
+  position: relative;
+  width: 80%;
+  margin: 20px auto;
+  padding: 10px;
+}
+
+.homepage-h2 {
+  width: 100%;
+
+  min-width: 200px;
+  margin: 20px auto;
+  padding: 10px;
+  font-size: 20px;
+}

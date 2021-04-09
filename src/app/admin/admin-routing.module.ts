@@ -7,7 +7,7 @@ import { ChannelsReportComponent } from './channels-report/channels-report.compo
 
 const adminRoutes: Routes = [
   {
-    path: 'reports-center',
+    path: 'admin',
     component: ReportsCenterComponent,
     children: [
       { path: 'orders', component: OrdersReportComponent },

@@ -1,36 +1,43 @@
 <div class="content" role="main">
-  <p>
-    <span matBadge="4" matBadgeOverlap="false">Text with a badge</span>
-  </p>
+  <div [@openClose]="isOpen ? 'open' : 'closed'" class="open-close-container">
+    <h2 class="homepage-h2">Top 3 products sold</h2>
+    <table class="homepage-ranking">
+     
+      <th>Product</th>
+      <th>Achieved(%)</th>
 
-  <p>
-    <span matBadge="1" matBadgeSize="large">Text with large badge</span>
-  </p>
+      <tr>
+        <th>Aero Oil&nbsp;(&nbsp;$100M)</th>
+        <td>
+          <mat-progress-bar
+            color="warn"
+            mode="determinate"
+            value="100"
+          ></mat-progress-bar>
+        </td>
+      </tr>
+      <tr>
+        <th>Engine Oil&nbsp;(&nbsp;$90M)</th>
 
-  <section>
-    <div class="example-label">Basic</div>
-    <div class="example-button-row">
-      <button mat-button>Basic</button>
-      <button mat-button color="primary">Primary</button>
-      <button mat-button color="accent">Accent</button>
-      <button mat-button color="warn">Warn</button>
-      <button mat-button disabled>Disabled</button>
-      <a mat-button href="https://www.google.com/" target="_blank">Link</a>
-    </div>
-  </section>
-  <mat-divider></mat-divider>
-  <section>
-    <div class="example-label">Raised</div>
-    <div class="example-button-row">
-      <button mat-raised-button>Basic</button>
-      <button mat-raised-button color="primary">Primary</button>
-      <button mat-raised-button color="accent">Accent</button>
-      <button mat-raised-button color="warn">Warn</button>
-      <button mat-raised-button disabled>Disabled</button>
-      <a mat-raised-button href="https://www.google.com/" target="_blank"
-        >Link</a
-      >
-    </div>
-  </section>
+        <td>
+          <mat-progress-bar
+            color="accent"
+            mode="determinate"
+            value="60"
+          ></mat-progress-bar>
+        </td>
+      </tr>
+      <tr>
+        <th>Essence&nbsp;(&nbsp;$60M)</th>
 
+        <td>
+          <mat-progress-bar
+            color="primary"
+            mode="determinate"
+            value="40"
+          ></mat-progress-bar>
+        </td>
+      </tr>
+    </table>
+  </div>
 </div>
