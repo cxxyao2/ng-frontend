@@ -50,8 +50,9 @@ footer {
   background-color: #64b5f6;
 }
 
-.content {
+.container {
   display: flex;
+  position: relative;
   margin: 70px auto 5px;
   padding: 5px;
   max-width: 600px;

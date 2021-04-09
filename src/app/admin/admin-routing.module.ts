@@ -17,11 +17,6 @@ const adminRoutes: Routes = [
       },
     ],
   },
-  { path: 'orders-report', component: OrdersReportComponent },
-  {
-    path: 'channels-report',
-    component: ChannelsReportComponent,
-  },
 ];
 
 @NgModule({

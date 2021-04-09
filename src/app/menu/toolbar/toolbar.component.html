@@ -5,13 +5,17 @@
   <span class="home-span"><a class="nav-link" routerLink="/home">CRM</a></span>
   <div class="spacer"></div>
   <ul class="main-navigation" role="navigation">
-    <li><a class="nav-link" routerLink="/order">Order</a></li>
-    <li><a class="nav-link" routerLink="/channel">Channel</a></li>
-    <li *ngIf="this.authService.currentUser?.isAdmin">
-      <a class="nav-link" routerLink="/channels-report">Admin</a>
+    <li>
+      <a class="nav-link" routerLink="/order">Order</a>
+    </li>
+    <li>
+      <a class="nav-link" routerLink="/channel">Channel</a>
+    </li>
+    <li>
+      <a class="nav-link" routerLink="/admin">Admin</a>
     </li>
     <li *ngIf="!this.authService.currentUser?.name">
-      <a class="nav-link" routerLink="/login">Login</a>
+      <a class="nav-link" routerLink="/login">login</a>
     </li>
     <li *ngIf="this.authService.currentUser?.name">
       <span style="margin-left: 5px; margin-right: 5px">{{
@@ -136,7 +140,7 @@
           >
         </li>
         <li>
-          <a class="sidenav-link"
+          <a class="sidenav-link" routerLink="/admin"
             ><mat-icon
               color="primary"
               class="md-24 mat-icon-sm"
@@ -145,7 +149,7 @@
             >
               insights
             </mat-icon>
-            admin( on development)
+            admin
           </a>
         </li>
         <li>
@@ -157,7 +161,7 @@
               aria-label=" avatar icon"
             >
               drafts </mat-icon
-            >Follow US</a
+            >Contact US</a
           >
         </li>
       </ul>
