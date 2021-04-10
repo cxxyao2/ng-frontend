@@ -2,7 +2,7 @@
   <div class="newcart">
     <form (ngSubmit)="submit()">
       <mat-form-field>
-        <mat-label>Customer</mat-label>
+        <mat-label>Select a customer</mat-label>
         <input
           type="text"
           required
@@ -57,6 +57,11 @@
         <ng-container *ngFor="let product of filterdProducts; let i = index">
           <app-item-card [product]="product"></app-item-card>
         </ng-container>
+        <span
+          *ngIf="!(filterdProducts && filterdProducts.length >= 1)"
+          style="color: blue"
+          >No valid data.</span
+        >
       </div>
     </form>
   </div>

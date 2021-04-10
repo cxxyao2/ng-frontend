@@ -40,6 +40,9 @@ h6 {
 }
 
 footer {
+  position: fixed;
+  left: 0;
+  bottom: 0;
   width: 100%;
   min-height: 30px;
   margin-top: 8px;
@@ -55,7 +58,8 @@ footer {
   position: relative;
   margin: 70px auto 5px;
   padding: 5px;
-  max-width: 600px;
+  width: 95%;
+  max-width: 900px;
   min-height: 600px;
   flex-direction: column;
   justify-content: flex-start;

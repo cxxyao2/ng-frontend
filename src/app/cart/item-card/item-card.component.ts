@@ -1,4 +1,6 @@
 import { Component, OnInit, Input, Output } from '@angular/core';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 import { Product } from '../../Product';
 import { Item } from '../../Item';
 
@@ -13,7 +15,11 @@ export class ItemCardComponent implements OnInit {
   @Input() product!: Product;
   quantity = 0;
 
-  constructor(private cartService: CartService) {}
+  constructor(
+    private cartService: CartService,
+    private route: ActivatedRoute,
+    private router: Router
+  ) {}
 
   // TODO:
   // 1 ADD SALES DATA
@@ -44,5 +50,10 @@ export class ItemCardComponent implements OnInit {
       quantity: this.quantity,
     };
     this.cartService.addItem(changedItem);
+  }
+
+  onClick(id: string) {
+    //console.log('id is', id);
+    this.router.navigate(['/item', id]);
   }
 }

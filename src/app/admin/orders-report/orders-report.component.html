@@ -1,4 +1,14 @@
-<div>
-  Analytical report about sales data, by category, be salesperson, by
-  distributor, etc. The function is on development. Charts, Graphs for managers.
+<div style="line-height: 1.5rem">
+  <div *ngFor="let item of this.options.series; let i = index">
+    {{ i + 1 }}-
+    <span class="colorRect" [style.background-color]="this.options.color[i]">
+    </span
+    >{{ item.name }}
+  </div>
+  <div>Unit: million</div>
 </div>
+<echarts
+  [initOpts]="initOpts"
+  [options]="options"
+  style="width: 500px; height: 600px; margin-top: 20px"
+></echarts>

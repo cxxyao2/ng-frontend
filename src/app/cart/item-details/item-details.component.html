@@ -1,7 +1,36 @@
 <div class="container" role="main">
-  <p>item-details works!</p>
-  {{ product | json }}
-  <button (click)="gotoPlaceOrder()">Back to Order</button>
-  <button (click)="prevItem()">pre</button>
-  <button (click)="afterItem()">after</button>
+  <p>Item Details</p>
+  <mat-card class="item-card">
+    <img mat-card-image src="assets/motor2.jpg" alt="Photo of oil" />
+    <mat-card-content>
+      <p>
+        No 1 engine oil boasts incredible anti-wear properties in both extremely
+        low and high temperatures, thanks to its SuperSyn Technology..
+      </p>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button color="primary" (click)="gotoPlaceOrder()">
+        Back to Order
+      </button>
+      <button mat-raised-button color="accent" (click)="prevItem()">Pre</button>
+      <button mat-raised-button color="warn" (click)="afterItem()">Next</button>
+    </mat-card-actions>
+
+<ul
+      style="
+        list-style-type: none;
+        line-height: 1.5rem;
+        margin:0;
+        padding:0;
+      "
+    >
+      Comments:
+      <li>*****: 5000&nbsp;(&nbsp;Mike: I promise it's perfect engine oil&nbsp;)</li>
+      <li>****: &nbsp;4080&nbsp;(&nbsp;Denise: Better than most products&nbsp;)</li>
+      <li>***: &nbsp;&nbsp;300&nbsp;(&nbsp;Jane: It's ok, but lower than expected&nbsp;)</li>
+    </ul>
+
+
+  </mat-card>
+  <mat-divider></mat-divider>
 </div>

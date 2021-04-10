@@ -24,28 +24,42 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   ) {}
 
   ngOnInit(): void {
+    console.log('item detail init');
+    this.route.paramMap
+      .pipe(
+        switchMap((params) => {
+          this.id = String(params.get('id'));
+          return this.prodSrv.getProduct(this.id);
+        })
+      )
+      .subscribe(
+        (data) => {
+          this.product = data;
+          console.log('hi', this.product);
+        },
+        (error) => {
+          console.log('error', error);
+        }
+      );
 
-
-    this.route.paramMap.subscribe((params: ParamMap) => {
-      this.id = params.get('id') || '';
-      this.prodSrv
-        .getProduct(this.id)
-        .subscribe((data) => (this.product = data));
-    });
+    // this.route.paramMap.subscribe((params: ParamMap) => {
+    //   this.id = params.get('id') || '';
+    //   this.prodSrv
+    //     .getProduct(this.id)
+    //     .subscribe((data) => (this.product = data));
+    // });
   }
 
-  ngOnDestroy(): void {
-   
-  }
+  ngOnDestroy(): void {}
 
   prevItem(): void {
     this.testMessage = 'prev';
-    this.router.navigate(['/item', '60010569ffa4a7376471d656']);
+    // this.router.navigate(['/item', '60010569ffa4a7376471d656']);
   }
 
   afterItem(): void {
     this.testMessage = 'after';
-    this.router.navigate(['/item', '6001057effa4a7376471d658']);
+    // this.router.navigate(['/item', '6001057effa4a7376471d658']);
   }
 
   // params  localhost:4200/heroes;id=15;foo=foo  or /heros/:id/:foo

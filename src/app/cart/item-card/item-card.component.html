@@ -3,12 +3,12 @@
     mat-card-image
     src="assets/motor1.jpg"
     alt="Photo of a Shiba Inu"
-    [routerLink]="['/item', product._id]"
+    (click)="onClick(product._id)"
   />
   <mat-card-content>
-    <p [routerLink]="['/item', product._id]">
-      The Shiba Inu is the smallest of the six original and distinct spitz
-      breeds of dog from Japan.
+    <p (click)="onClick(product._id)">
+      • 75% more engine protection against horsepower loss and wear.1 • 50% more
+      cleaning power vs. AMSOIL OE Motor Oil
     </p>
   </mat-card-content>
   <mat-card-actions>

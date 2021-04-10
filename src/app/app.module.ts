@@ -4,6 +4,7 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgModule } from '@angular/core';
 import { HttpClientModule } from '@angular/common/http';
 
+
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { ChannelComponent } from './channel/channel.component';
@@ -21,6 +22,7 @@ import { CreatePasswordStrengthDirective } from './share/create-password-strengt
 import { UniqueUserDirective } from './share/unique-user.directive';
 import { IdentifyPasswordDirective } from './share/identify-password.directive';
 import { ForbiddenNameDirective } from './share/forbidden-name.directive';
+import { ScrollToTopComponent } from './scroll-to-top/scroll-to-top.component';
 
 @NgModule({
   declarations: [
@@ -34,6 +36,7 @@ import { ForbiddenNameDirective } from './share/forbidden-name.directive';
     PageNotFoundComponent,
     ToolbarComponent,
     UniqueUserDirective,
+    ScrollToTopComponent,
   ],
   imports: [
     AdminModule,
@@ -45,7 +48,7 @@ import { ForbiddenNameDirective } from './share/forbidden-name.directive';
     HttpClientModule,
     MaterialCenterModule,
     ReactiveFormsModule,
-    AppRoutingModule,
+    AppRoutingModule
   ],
   providers: [httpInterceptorProviders],
   bootstrap: [AppComponent],
