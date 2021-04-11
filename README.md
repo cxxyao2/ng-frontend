@@ -8,7 +8,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 * Router,Module,Guard
 * Animation
 * Http: RESTful API, HttpHeaders, HttInterceptors
-* RxJS: SwitchMap,Map,throwError,of,from,catchError,throwError
+* RxJS: SwitchMap,Map,throwError,of,from,catchError,throwError,pipe,retry
 * Typescript: Inject, decorator.
 > 
 # IDE
