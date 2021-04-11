@@ -7,7 +7,7 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
     * Directives for template-driven form
 * Router,Module,Guard
 * Animation
-* http, HttpHeaders, HttInterceptors
+* Http: RESTful API, HttpHeaders, HttInterceptors
 * RxJS: SwitchMap,Map,throwError,of,from,catchError,throwError
 * Typescript: Inject, decorator.
 > 
