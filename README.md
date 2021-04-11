@@ -1,11 +1,10 @@
 # NgFront
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 11.0.4.
-
-* Angular 10
 * Custom validator
     * Synchronous validator
     * Asynchronous validator
+    * Directives for template-driven form
 * Router,Module,Guard
 * Animation
 * http, HttpHeaders, HttInterceptors
