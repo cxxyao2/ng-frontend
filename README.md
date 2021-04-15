@@ -12,7 +12,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - RxJS: SwitchMap,Map,throwError,of,from,catchError,throwError,pipe,retry
 - Typescript: Inject, decorator.
 - Scss
-  >
+- Performance Optimization
+  - lazy loading: based on es2016 dynamic import
 
 # IDE
 
