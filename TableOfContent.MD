@@ -1,37 +1,35 @@
 # Angular Material
 
-# Route guard: canActive
+- Route guard: canActive
 
-# Pipe
+- Pipe
 
-# Router
+- Router
 
-# Rxjs
+- Rxjs
 
-# Typescript
+- Typescript
 
-# Animation
+- Animation
 
-# HttpInterceptor
+- HttpInterceptor
 
-# validator
+- Validator
 
-- AsyncValidator
-- syncValidator
+  - AsyncValidator
+  - syncValidator
+
+- Chart
+- Scss
+- Test
+
+  - UT
+  - IT
+  - e2e
 
 # Backend
 
 - Node.js, express, Mongodb, Mysql
-
-# Chart
-
-# Geo Location
-
-# Test
-
-- UT
-- IT
-- e2e
 
 # Others
 

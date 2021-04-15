@@ -37,6 +37,9 @@ $active-theme: mat-light-theme($active-primary, $active-accent, $active-warn);
   .nav-link:hover {
     background-color: mat-color($active-light);
   }
+  footer {
+    background-color: mat-color($active-primary);
+  }
 }
 
 $app-light: mat-palette($mat-blue, 100);
@@ -69,5 +72,9 @@ $app-warn: mat-palette($mat-orange, 900);
 }
 
 .person-flash {
+  background-color: mat-color($app-primary);
+}
+
+footer {
   background-color: mat-color($app-primary);
 }
