@@ -26,12 +26,12 @@ $active-theme: mat-light-theme($active-primary, $active-accent, $active-warn);
 
   .toolbar {
     background-color: mat-color($active-primary);
-  }
-  .toolbar button {
-    background-color: mat-color($active-primary);
-  }
-  .toolbar .shopping-cart-icon:hover {
-    background-color: mat-color($active-light);
+    button {
+      background-color: mat-color($active-primary);
+    }
+    .shopping-cart-icon:hover {
+      background-color: mat-color($active-light);
+    }
   }
 
   .nav-link:hover {
@@ -59,12 +59,12 @@ $app-warn: mat-palette($mat-orange, 900);
 
 .toolbar {
   background-color: mat-color($app-primary);
-}
-.toolbar button {
-  background-color: mat-color($app-primary);
-}
-.toolbar .shopping-cart-icon:hover {
-  background-color: mat-color($app-light);
+  button {
+    background-color: mat-color($app-primary);
+  }
+  .shopping-cart-icon:hover {
+    background-color: mat-color($app-light);
+  }
 }
 
 .nav-link:hover {

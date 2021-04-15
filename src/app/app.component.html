@@ -1,4 +1,8 @@
-<div [class.active-user]="this.authService.currentUser?.theme === 'purple'">
+<div
+  [ngClass]="{
+    'active-user': this.authService.currentUser?.theme === 'purple'
+  }"
+>
   <toolbar></toolbar>
 
   <router-outlet></router-outlet>
