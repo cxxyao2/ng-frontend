@@ -43,6 +43,7 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any> {
     const url = this.configUrl + '/auth';
+    console.log('details', url, 'email ', email, ' pass ', password);
     return this.http.post(
       url,
       {
