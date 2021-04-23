@@ -33,13 +33,6 @@ export class AuthService {
     return this.http.post(url, { name: user });
   }
 
-  getUser(id: string): Observable<any> {
-    // const url = this.configUrl + '/users/' + id;
-    // return this.http.get(url);
-    const url = this.configUrl + '/categories/' + '6001023affa4a7376471d64e';
-    return this.http.delete(url);
-  }
-
   setUserTheme(theme: number): void {
     if (theme === 1) {
       this.currentUser.theme = 'blue';
