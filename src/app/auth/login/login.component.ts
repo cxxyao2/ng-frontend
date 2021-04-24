@@ -55,6 +55,7 @@ export class LoginComponent implements OnInit {
       .login(this.fullName?.value, this.password?.value)
       .subscribe(
         (result) => {
+          console.log('login get result ', result);
           if (result) {
             this.authService.loginWithJwt(result);
             const returnUrl = this.route.snapshot.queryParamMap.get(
