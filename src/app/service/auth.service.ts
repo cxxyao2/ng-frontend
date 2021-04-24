@@ -43,6 +43,7 @@ export class AuthService {
 
   login(email: string, password: string): Observable<any> {
     const url = this.configUrl + '/auth';
+    console.log('environment apiUrl ', environment);
     console.log('details', url, 'email ', email, ' pass ', password);
     return this.http.post(
       url,
@@ -59,6 +60,7 @@ export class AuthService {
   }
 
   loginWithJwt(jwt: string) {
+    console.log('loginwithJwt ', jwt);
     localStorage.setItem(this.tokenKey, jwt);
     this.setCurrentUser();
   }
