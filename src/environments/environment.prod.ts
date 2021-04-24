@@ -4,5 +4,5 @@ export const environment = {
   appName: 'undefined',
   awsPubKey: 'undefined',
   nodeEnv: 'production',
-  production: 'undefined',
+  production: 'true',
 };
