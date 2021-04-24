@@ -13,7 +13,8 @@ This project was generated with [Angular CLI](https://github.com/angular/angular
 - Typescript: Inject, decorator.
 - Scss
 - Performance Optimization
-  - lazy loading: based on dynamic import
+- lazy loading: based on dynamic import
+- Automated Test: component, service, pipe, directive, etc.
 
 # IDE
 
